@@ -5,6 +5,7 @@ Created on 11.10.2010
 '''
 
 import pygame
+import renderer
 
 class Statemanager(object):
     '''
@@ -73,19 +74,22 @@ class GameState(State):
     
     def __init__(self, stateManager):
         State.__init__(self, stateManager)
-    
+        
+        self.stateManager = stateManager
         # create rendering, physics, level -management classes
-    
+        self.gameRenderer = renderer.GameRenderer()
+
     def update(self):
-        pass
+        self.gameRenderer.update()
     
     def handleInput(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                self.run = False
+                self.stateManager.run = False
     
     def render(self):
-        pass
+        self.gameRenderer.renderMap()
+        self.gameRenderer.renderBlocks()
     
 class PauseState(State):
     
