@@ -91,7 +91,7 @@ class GameState(State):
     
     def render(self):
         self.gameRenderer.renderMap()
-        self.gameRenderer.renderBlocks()
+        self.gameRenderer.renderBlocks( self.levelManager.curLevel.getBlockList() )
     
 class PauseState(State):
     

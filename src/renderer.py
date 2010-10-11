@@ -39,5 +39,6 @@ class GameRenderer(Renderer):
     def renderMap(self):
         print "render map"
     
-    def renderBlocks(self):
-        print "render blocks"
+    def renderBlocks(self, blockList):
+        for block in blockList:
+            self.screen.blit( block.getSurface(), block.getPosition() )

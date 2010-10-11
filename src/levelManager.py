@@ -5,6 +5,7 @@ Created on 12.10.2010
 '''
 
 import random
+import blocks
 
 class LevelManager(object):
     '''
@@ -26,10 +27,18 @@ class Level(object):
     def __init__(self, dim, speed):
         self.mapDim = dim
         self.blockSpeed = speed
+        
+        self.blockList = []
 
     def addBlock(self, index):
+        # quad block
         if index == 0:
-            pass
+            self.blockList.append(blocks.Quad_Block( (self.mapDim[0]//2, 0), (255,0,255) ))
+        elif index == 1:
+            self.blockList.append(blocks.Pyramide_Block( (self.mapDim[0]//2, 0), (255,0,255) ))
 
     def addRndBlock(self):
-        self.addBlock(random.randint(0,0))
+        self.addBlock(random.randint(0,1))
+        
+    def getBlockList(self):
+        return self.blockList
