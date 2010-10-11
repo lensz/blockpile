@@ -6,6 +6,7 @@ Created on 11.10.2010
 
 import pygame
 import renderer
+import levelManager
 
 class Statemanager(object):
     '''
@@ -74,9 +75,10 @@ class GameState(State):
     
     def __init__(self, stateManager):
         State.__init__(self, stateManager)
-        
+
         self.stateManager = stateManager
         # create rendering, physics, level -management classes
+        self.levelManager = levelManager.LevelManager()
         self.gameRenderer = renderer.GameRenderer()
 
     def update(self):
