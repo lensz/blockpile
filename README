@@ -2,10 +2,16 @@ Blockpile
 (Tetris clone)
 
 
-version: 0.0
+version: 0.1
 
 Todo:
-- nearly everything
+- menu
+- intro
+- score
+- new blocks
+- better interface
+- critical: faster!
 
-### ###
+### 0.1 ###
 - basic structure of programm
+- basics are working (piling of the blocks)

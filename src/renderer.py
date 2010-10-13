@@ -6,6 +6,7 @@ Created on 12.10.2010
 
 import util.constants as constants
 import pygame
+from util.vector import Vec2d
 
 class Renderer(object):
     '''
@@ -33,12 +34,28 @@ class GameRenderer(Renderer):
     def __init__(self):
         Renderer.__init__(self)
         
+        self.playboardOffset = Vec2d(250,75) #in px
+        
     def update(self):
-        print "update renderer"
+        pass
     
-    def renderMap(self):
-        print "render map"
+    def renderBG(self):
+        self.screen.fill([0,0,0])
     
+    def renderMap(self, level):
+        pygame.draw.rect(self.screen, (255,255,225), pygame.Rect(self.playboardOffset, (level.getSize()[0]*constants.QUADRATSIZE,level.getSize()[1]*constants.QUADRATSIZE)))
+
+    def generateBlockSurface(self, block):
+        surface = pygame.Surface( (block.dim[0]*constants.QUADRATSIZE, block.dim[1]*constants.QUADRATSIZE))
+        surface.fill((255,0,255))
+        surface.set_colorkey((255,0,255))
+
+        for quadrat in block.quadratList:
+            surface.blit( quadrat.surface, (quadrat.getPosition()[0]*constants.QUADRATSIZE, quadrat.getPosition()[1]*constants.QUADRATSIZE) )
+        
+        return surface
+
     def renderBlocks(self, blockList):
+
         for block in blockList:
-            self.screen.blit( block.getSurface(), block.getPosition() )
+            self.screen.blit(block.getSurface(), self.playboardOffset + Vec2d(block.getPosition()[0]*constants.QUADRATSIZE, block.getPosition()[1]*constants.QUADRATSIZE))

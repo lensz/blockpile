@@ -13,32 +13,48 @@ class LevelManager(object):
     '''
 
 
-    def __init__(self):
+    def __init__(self, renderer, physics):
         '''
         Constructor
         '''
         self.levelList = []
-        self.levelList.append(Level((20,20), 1000))
+        self.levelList.append(Level((20,20), renderer, physics))
         
         self.curLevel = self.levelList[0]
         
 class Level(object):
 
-    def __init__(self, dim, speed):
+    def __init__(self, dim, renderer, physics):
+        self.renderer = renderer
+        self.physics = physics
         self.mapDim = dim
-        self.blockSpeed = speed
         
         self.blockList = []
+        
+        self.activeBlock = None
 
     def addBlock(self, index):
-        # quad block
+        # 1-255 in order to avoid fitting the color-key
+        color = (random.randint(0,255), random.randint(1,255), random.randint(0,255))
+
         if index == 0:
-            self.blockList.append(blocks.Quad_Block( (self.mapDim[0]//2, 0), (255,0,255) ))
+            self.blockList.append(blocks.Quad_Block( self, (self.mapDim[0]//2, 0), color ))
+            self.activeBlock = self.blockList[-1]
         elif index == 1:
-            self.blockList.append(blocks.Pyramide_Block( (self.mapDim[0]//2, 0), (255,0,255) ))
+            self.blockList.append(blocks.Pyramide_Block( self, (self.mapDim[0]//2, 0), color ))
+            self.activeBlock = self.blockList[-1]
+        elif index == 2:
+            self.blockList.append(blocks.Point_Block( self, (self.mapDim[0]//2, 0), color  ))
+            self.activeBlock = self.blockList[-1]
+        elif index == 3:
+            self.blockList.append(blocks.H_Block( self, (self.mapDim[0]//2, 0), color  ))
+            self.activeBlock = self.blockList[-1]
 
     def addRndBlock(self):
-        self.addBlock(random.randint(0,1))
+        self.addBlock(random.randint(0,3))
         
     def getBlockList(self):
         return self.blockList
+    
+    def getSize(self):
+        return self.mapDim

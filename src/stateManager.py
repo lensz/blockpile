@@ -7,6 +7,8 @@ Created on 11.10.2010
 import pygame
 import renderer
 import levelManager
+import physics
+import util.constants as constants
 
 class Statemanager(object):
     '''
@@ -34,14 +36,21 @@ class Statemanager(object):
         
         self.switchState(self.GAMESTATE)
         
+        self.clock = pygame.time.Clock()
+        
     def switchState(self, index):
         self.curState = self.stateList[index]
         
     def runGame(self):
         while self.run:
+            self.clock.tick()
+            #print self.clock.get_fps()
+            
             self.curState.update()
             self.curState.handleInput()
             self.curState.render()
+            
+            pygame.display.update()
         
 class State(object):
     
@@ -78,19 +87,40 @@ class GameState(State):
 
         self.stateManager = stateManager
         # create rendering, physics, level -management classes
-        self.levelManager = levelManager.LevelManager()
         self.gameRenderer = renderer.GameRenderer()
+        self.physicManager = physics.PhysicManager()
+
+        self.levelManager = levelManager.LevelManager(self.gameRenderer, self.physicManager)
+    
+        self.levelManager.curLevel.addRndBlock()
+        
+        pygame.time.set_timer(constants.BLOCKTICK, 350)
 
     def update(self):
+        self.physicManager.update()
+        self.physicManager.checkMapCol()
         self.gameRenderer.update()
     
     def handleInput(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.stateManager.run = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    self.stateManager.run = False
+                elif event.key == pygame.K_LEFT:
+                    self.levelManager.curLevel.activeBlock.moveLeft()
+                elif event.key == pygame.K_RIGHT:
+                    self.levelManager.curLevel.activeBlock.moveRight()
+                elif event.key == pygame.K_DOWN:
+                    self.levelManager.curLevel.activeBlock.moveDown()
+            
+            elif event.type == constants.BLOCKTICK:
+                self.levelManager.curLevel.activeBlock.moveDown()
     
     def render(self):
-        self.gameRenderer.renderMap()
+        self.gameRenderer.renderBG()
+        self.gameRenderer.renderMap(self.levelManager.curLevel)
         self.gameRenderer.renderBlocks( self.levelManager.curLevel.getBlockList() )
     
 class PauseState(State):
