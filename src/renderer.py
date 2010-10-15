@@ -58,4 +58,4 @@ class GameRenderer(Renderer):
     def renderBlocks(self, blockList):
 
         for block in blockList:
-            self.screen.blit(block.getSurface(), self.playboardOffset + Vec2d(block.getPosition()[0]*constants.QUADRATSIZE, block.getPosition()[1]*constants.QUADRATSIZE))
+            self.screen.blit(block.getSurface(), self.playboardOffset + Vec2d(block.getAbsPos()[0], block.getAbsPos()[1]))

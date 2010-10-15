@@ -31,7 +31,7 @@ class PhysicManager(object):
         curBlock = id(block)
         for quadrat in block.quadratList:
             # map
-            if block.getPosition()[0] + quadrat.getPosition()[0] - 1 < 0:
+            if block.getAbsPos()[0] + quadrat.getAbsPos()[0] - constants.QUADRATSIZE < 0: 
                 return True
             # blocks
             for enemyBlock in level.blockList:
@@ -49,7 +49,7 @@ class PhysicManager(object):
         curBlock = id(block)
         for quadrat in block.quadratList:
             # map
-            if block.getPosition()[0] + quadrat.getPosition()[0] + 1 >= level.getSize()[0]:
+            if block.getAbsPos()[0] + quadrat.getAbsPos()[0] + constants.QUADRATSIZE >= level.getSize()[0]*constants.QUADRATSIZE:
                 return True
             # blocks
             for enemyBlock in level.blockList:
@@ -65,7 +65,7 @@ class PhysicManager(object):
         curBlock = id(block)
         for quadrat in block.quadratList:
             # map
-            if block.getPosition()[1] + quadrat.getPosition()[1] + 1 >= level.getSize()[1]:
+            if block.getAbsPos()[1] + quadrat.getAbsPos()[1] + constants.QUADRATSIZE >= level.getSize()[1]*constants.QUADRATSIZE:
                 return True
             # blocks
             for enemyBlock in level.blockList:
@@ -79,15 +79,15 @@ class PhysicManager(object):
     def checkColBetweenBlocks(self, a, b):
         
         for quadratA in a.quadratList:
-            posQA = (a.getPosition()[0]+quadratA.getPosition()[0], a.getPosition()[1]+quadratA.getPosition()[1])
-            absPosQA = (posQA[0]*constants.QUADRATSIZE, posQA[1]*constants.QUADRATSIZE)
+            posQA = (a.getAbsPos()[0]+quadratA.getAbsPos()[0], a.getAbsPos()[1]+quadratA.getAbsPos()[1])
+            absPosQA = (posQA[0], posQA[1])
             
             rectA = pygame.Rect( absPosQA, (constants.QUADRATSIZE, constants.QUADRATSIZE) )
             
             for quadratB in b.quadratList:
                 
-                posQB = (b.getPosition()[0]+quadratB.getPosition()[0], b.getPosition()[1]+quadratB.getPosition()[1])
-                absPosQB = (posQB[0]*constants.QUADRATSIZE, posQB[1]*constants.QUADRATSIZE)
+                posQB = (b.getAbsPos()[0]+quadratB.getAbsPos()[0], b.getAbsPos()[1]+quadratB.getAbsPos()[1])
+                absPosQB = (posQB[0], posQB[1])
             
                 rectB = pygame.Rect( absPosQB, (constants.QUADRATSIZE, constants.QUADRATSIZE) )
                 

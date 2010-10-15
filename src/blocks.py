@@ -19,16 +19,24 @@ class Block(object):
         Constructor
         '''
         self.level = level
-        self.position = Vec2d(pos)
-        self.color = color
         self.renderer = level.renderer
         self.physics = level.physics
+        self.color = color
+        self.movespeed = 5
+        
+        self.velocity = Vec2d((0,0))
+
+        self.position = Vec2d(pos) # abs px in screen
+        self.rotation = 0 # in degree 0-359 
     
     def getSurface(self):
         return self.surface
         
-    def getPosition(self):
+    def getAbsPos(self):
         return self.position
+    
+    def updatePos(self):
+        self.position += self.velocity
     
     def moveDown(self):
         '''gets called if there is no collision for the next step'''
@@ -36,17 +44,20 @@ class Block(object):
         if self.physics.checkDownCol(self, self.level):
             self.level.addRndBlock()
             return
-        self.position[1] += 1
+        self.velocity = Vec2d(self.velocity[0],self.movespeed)
         
     def moveLeft(self):
         if self.physics.checkLeftCol(self, self.level):
             return
-        self.position[0] -= 1
+        self.velocity = Vec2d(-self.movespeed,self.velocity[1])
         
     def moveRight(self):
         if self.physics.checkRightCol(self, self.level):
             return
-        self.position[0] += 1
+        self.velocity = Vec2d(self.movespeed,self.velocity[1])
+        
+    def moveStop(self):
+        self.velocity = Vec2d(0,0)
 
 class Point_Block(Block):
     '''
@@ -113,6 +124,9 @@ class Quadrat(object):
         self.pos = pos
         self.surface = pygame.Surface((constants.QUADRATSIZE, constants.QUADRATSIZE))
         self.surface.fill(color)
+    
+    def getAbsPos(self):
+        return (self.pos[0]*constants.QUADRATSIZE,self.pos[1]*constants.QUADRATSIZE)
     
     def getPosition(self):
         return self.pos
