@@ -58,4 +58,6 @@ class GameRenderer(Renderer):
     def renderBlocks(self, blockList):
 
         for block in blockList:
-            self.screen.blit(block.getSurface(), self.playboardOffset + Vec2d(block.getAbsPos()[0], block.getAbsPos()[1]))
+            blockSur = block.getSurface()
+            blockSur = pygame.transform.rotate(blockSur, block.rotation)
+            self.screen.blit(blockSur , self.playboardOffset + Vec2d(block.getAbsPos()[0], block.getAbsPos()[1]))

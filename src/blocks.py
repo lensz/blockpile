@@ -25,6 +25,7 @@ class Block(object):
         self.movespeed = 5
         
         self.velocity = Vec2d((0,0))
+        self.rotationVel = 0
 
         self.position = Vec2d(pos) # abs px in screen
         self.rotation = 0 # in degree 0-359 
@@ -37,6 +38,14 @@ class Block(object):
     
     def updatePos(self):
         self.position += self.velocity
+        self.rotation += self.rotationVel
+        print self.rotation
+        
+    def turnLeft(self):
+        self.rotationVel = 3
+    
+    def turnRight(self):
+        self.rotationVel = -3
     
     def moveDown(self):
         '''gets called if there is no collision for the next step'''
@@ -58,6 +67,9 @@ class Block(object):
         
     def moveStop(self):
         self.velocity = Vec2d(0,0)
+        
+    def rotaStop(self):
+        self.rotationVel = 0
 
 class Point_Block(Block):
     '''

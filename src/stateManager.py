@@ -112,16 +112,20 @@ class GameState(State):
                     self.levelManager.curLevel.activeBlock.moveLeft()
                 elif event.key == pygame.K_RIGHT:
                     self.levelManager.curLevel.activeBlock.moveRight()
+                elif event.key == pygame.K_UP:
+                    self.levelManager.curLevel.activeBlock.turnLeft()
                 elif event.key == pygame.K_DOWN:
-                    self.levelManager.curLevel.activeBlock.moveDown()
+                    self.levelManager.curLevel.activeBlock.turnRight()
                     
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT:
                     self.levelManager.curLevel.activeBlock.moveStop()
                 elif event.key == pygame.K_RIGHT:
                     self.levelManager.curLevel.activeBlock.moveStop()
+                elif event.key == pygame.K_UP:
+                    self.levelManager.curLevel.activeBlock.rotaStop()
                 elif event.key == pygame.K_DOWN:
-                    self.levelManager.curLevel.activeBlock.moveStop()
+                    self.levelManager.curLevel.activeBlock.rotaStop()
             
             elif event.type == constants.BLOCKTICK:
                 self.levelManager.curLevel.activeBlock.moveDown()
