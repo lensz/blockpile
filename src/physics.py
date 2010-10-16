@@ -37,7 +37,7 @@ class PhysicManager(object):
             for enemyBlock in level.blockList:
                 if id(enemyBlock) != curBlock:
                     futureBlock = copy.deepcopy(block)
-                    futureBlock.position[0] -=1
+                    futureBlock.position[0] -= 1
                     if self.checkColBetweenBlocks(futureBlock, enemyBlock):
                         return True
 
@@ -55,7 +55,7 @@ class PhysicManager(object):
             for enemyBlock in level.blockList:
                 if id(enemyBlock) != curBlock:
                     futureBlock = copy.deepcopy(block)
-                    futureBlock.position[0] +=1
+                    futureBlock.position[0] += 1
                     if self.checkColBetweenBlocks(futureBlock, enemyBlock):
                         return True
 
@@ -71,7 +71,7 @@ class PhysicManager(object):
             for enemyBlock in level.blockList:
                 if id(enemyBlock) != curBlock:
                     futureBlock = copy.deepcopy(block)
-                    futureBlock.position[1] +=1
+                    futureBlock.position[1] += 1
                     if self.checkColBetweenBlocks(futureBlock, enemyBlock):
                         return True
         return False
