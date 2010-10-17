@@ -38,7 +38,12 @@ class Block(object):
     
     def updatePos(self):
         self.position += self.velocity
+
         self.rotation += self.rotationVel
+        if self.rotation >= 360:
+            self.rotation -= 360
+        elif self.rotation < 0:
+            self.rotation += 360
         print self.rotation
         
     def turnLeft(self):
