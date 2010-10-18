@@ -50,7 +50,7 @@ class GameRenderer(Renderer):
         surface.fill((255,0,255))
         surface.set_colorkey((255,0,255))
 
-        for quadrat in block.quadratList:
+        for quadrat in block.structureList[block.rotaIndex]:
             surface.blit( quadrat.surface, (quadrat.getPosition()[0]*constants.QUADRATSIZE, quadrat.getPosition()[1]*constants.QUADRATSIZE) )
         
         return surface
@@ -61,3 +61,4 @@ class GameRenderer(Renderer):
             blockSur = block.getSurface()
             blockSur = pygame.transform.rotate(blockSur, block.rotation)
             self.screen.blit(blockSur , self.playboardOffset + Vec2d(block.getAbsPos()[0], block.getAbsPos()[1]))
+

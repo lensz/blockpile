@@ -94,7 +94,7 @@ class GameState(State):
     
         self.levelManager.curLevel.addRndBlock()
         
-        pygame.time.set_timer(constants.BLOCKTICK, 50)
+        pygame.time.set_timer(constants.BLOCKTICK, 60)
 
     def update(self):
         self.physicManager.update()

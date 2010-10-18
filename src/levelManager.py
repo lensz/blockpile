@@ -50,9 +50,12 @@ class Level(object):
         elif index == 3:
             self.blockList.append(blocks.H_Block( self, (self.mapDim[0]//2*constants.QUADRATSIZE, 0), color  ))
             self.activeBlock = self.blockList[-1]
+        elif index == 4:
+            self.blockList.append(blocks.Rotation_test( self, (self.mapDim[0]//2*constants.QUADRATSIZE, 0), color  ))
+            self.activeBlock = self.blockList[-1]
 
     def addRndBlock(self):
-        self.addBlock(random.randint(0,3))
+        self.addBlock(random.randint(4,4))
         
     def getBlockList(self):
         return self.blockList

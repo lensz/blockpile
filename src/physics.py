@@ -29,7 +29,7 @@ class PhysicManager(object):
     def checkLeftCol(self, block, level):
         '''returns true if there is a collision'''
         curBlock = id(block)
-        for quadrat in block.quadratList:
+        for quadrat in block.structureList[block.rotaIndex]:
             # map
             if block.getAbsPos()[0] + quadrat.getAbsPos()[0] - constants.QUADRATSIZE < 0: 
                 return True
@@ -47,7 +47,7 @@ class PhysicManager(object):
         '''returns true if there is a collision'''
 
         curBlock = id(block)
-        for quadrat in block.quadratList:
+        for quadrat in block.structureList[block.rotaIndex]:
             # map
             if block.getAbsPos()[0] + quadrat.getAbsPos()[0] + constants.QUADRATSIZE >= level.getSize()[0]*constants.QUADRATSIZE:
                 return True
@@ -63,7 +63,7 @@ class PhysicManager(object):
     
     def checkDownCol(self, block, level):
         curBlock = id(block)
-        for quadrat in block.quadratList:
+        for quadrat in block.structureList[block.rotaIndex]:
             # map
             if block.getAbsPos()[1] + quadrat.getAbsPos()[1] + constants.QUADRATSIZE >= level.getSize()[1]*constants.QUADRATSIZE:
                 return True
@@ -78,14 +78,14 @@ class PhysicManager(object):
     
     def checkColBetweenBlocks(self, a, b):
         
-        for quadratA in a.quadratList:
+        for quadratA in a.structureList[a.rotaIndex]:
             posQA = (a.getAbsPos()[0]+quadratA.getAbsPos()[0], a.getAbsPos()[1]+quadratA.getAbsPos()[1])
             absPosQA = (posQA[0], posQA[1])
             
             rectA = pygame.Rect( absPosQA, (constants.QUADRATSIZE, constants.QUADRATSIZE) )
             
-            for quadratB in b.quadratList:
-                
+            for quadratB in b.structureList[b.rotaIndex]:
+                #print b.getAbsPos()
                 posQB = (b.getAbsPos()[0]+quadratB.getAbsPos()[0], b.getAbsPos()[1]+quadratB.getAbsPos()[1])
                 absPosQB = (posQB[0], posQB[1])
             
