@@ -55,7 +55,7 @@ class Level(object):
             self.activeBlock = self.blockList[-1]
 
     def addRndBlock(self):
-        self.addBlock(random.randint(4,4))
+        self.addBlock(random.randint(0,4))
         
     def getBlockList(self):
         return self.blockList

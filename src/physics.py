@@ -6,7 +6,6 @@ Created on 12.10.2010
 
 import pygame
 import util.constants as constants
-import copy
 
 class PhysicManager(object):
     '''
@@ -29,9 +28,9 @@ class PhysicManager(object):
     def checkLeftCol(self, block, level):
         '''returns true if there is a collision'''
         curBlock = id(block)
-        for quadrat in block.structureList[block.rotaIndex]:
+        for quadrat in block.structureList[block.rotaIndex][1]:
             # map
-            if block.getAbsPos()[0] + quadrat.getAbsPos()[0] - constants.QUADRATSIZE < 0: 
+            if block.getAbsPos()[0] + quadrat.getAbsPos()[0] <= 0: 
                 return True
             # blocks
             for enemyBlock in level.blockList:
@@ -48,7 +47,7 @@ class PhysicManager(object):
         '''returns true if there is a collision'''
 
         curBlock = id(block)
-        for quadrat in block.structureList[block.rotaIndex]:
+        for quadrat in block.structureList[block.rotaIndex][1]:
             # map
             if block.getAbsPos()[0] + quadrat.getAbsPos()[0] + constants.QUADRATSIZE >= level.getSize()[0]*constants.QUADRATSIZE:
                 return True
@@ -65,7 +64,7 @@ class PhysicManager(object):
     
     def checkDownCol(self, block, level):
         curBlock = id(block)
-        for quadrat in block.structureList[block.rotaIndex]:
+        for quadrat in block.structureList[block.rotaIndex][1]:
             # map
             if block.getAbsPos()[1] + quadrat.getAbsPos()[1] + constants.QUADRATSIZE >= level.getSize()[1]*constants.QUADRATSIZE:
                 return True
@@ -81,13 +80,13 @@ class PhysicManager(object):
     
     def checkColBetweenBlocks(self, a, b, futureOffset):
         
-        for quadratA in a.structureList[a.rotaIndex]:
+        for quadratA in a.structureList[a.rotaIndex][1]:
             posQA = (a.getAbsPos()[0]+futureOffset[0]+quadratA.getAbsPos()[0], a.getAbsPos()[1]+futureOffset[1]+quadratA.getAbsPos()[1])
             absPosQA = (posQA[0], posQA[1])
             
             rectA = pygame.Rect( absPosQA, (constants.QUADRATSIZE, constants.QUADRATSIZE) )
             
-            for quadratB in b.structureList[b.rotaIndex]:
+            for quadratB in b.structureList[b.rotaIndex][1]:
                 #print b.getAbsPos()
                 posQB = (b.getAbsPos()[0]+quadratB.getAbsPos()[0], b.getAbsPos()[1]+quadratB.getAbsPos()[1])
                 absPosQB = (posQB[0], posQB[1])
