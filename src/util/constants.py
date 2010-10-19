@@ -12,7 +12,8 @@ ISDEBUG = False
 ISFULLSCR = False
 
 # size in pixel for 1 quadrat
-QUADRATSIZE = 15
+QUADRATSIZE = 20
 
 # Events:
-BLOCKTICK = 26
+BLOCK_DOWNTICK = 26
+BLOCK_ROTATICK = 27

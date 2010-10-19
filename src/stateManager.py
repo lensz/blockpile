@@ -94,7 +94,8 @@ class GameState(State):
     
         self.levelManager.curLevel.addRndBlock()
         
-        pygame.time.set_timer(constants.BLOCKTICK, 10)
+        pygame.time.set_timer(constants.BLOCK_DOWNTICK, 300)
+        pygame.time.set_timer(constants.BLOCK_ROTATICK, 75)
 
     def update(self):
         self.physicManager.update()
@@ -116,9 +117,6 @@ class GameState(State):
                 elif event.key == pygame.K_DOWN:
                     self.levelManager.curLevel.activeBlock.turnRight()
                     
-                elif event.key == pygame.K_m:
-                    pygame.time.set_timer(constants.BLOCKTICK, 0)
-                    
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT:
                     self.levelManager.curLevel.activeBlock.moveStop()
@@ -128,14 +126,13 @@ class GameState(State):
                     self.levelManager.curLevel.activeBlock.rotaStop()
                 elif event.key == pygame.K_DOWN:
                     self.levelManager.curLevel.activeBlock.rotaStop()
-                    
-                elif event.key == pygame.K_m:
-                    pygame.time.set_timer(constants.BLOCKTICK, 10)
             
-            elif event.type == constants.BLOCKTICK:
+            elif event.type == constants.BLOCK_DOWNTICK:
                 self.levelManager.curLevel.activeBlock.moveDown()
-                
-                self.levelManager.curLevel.activeBlock.updatePos()
+                self.levelManager.curLevel.activeBlock.updatePosY()
+            elif event.type == constants.BLOCK_ROTATICK:
+                self.levelManager.curLevel.activeBlock.updatePosX()
+                self.levelManager.curLevel.activeBlock.updateRota()          
 
     def render(self):
         self.gameRenderer.renderBG()

@@ -22,7 +22,7 @@ class Block(object):
         self.renderer = level.renderer
         self.physics = level.physics
         self.color = color
-        self.movespeed = 1
+        self.movespeed = constants.QUADRATSIZE
         
         self.velocity = Vec2d((0,0))
         self.rotationVel = 0
@@ -45,8 +45,27 @@ class Block(object):
     def getAbsPos(self):
         return self.position
     
-    def updatePos(self):
+    def updatePosX(self):
+        if self.velocity[0] > 0:
+            if not self.physics.checkRightCol(self, self.level):
+                self.position[0] += self.velocity[0]
+        elif self.velocity[0] < 0:
+            if not self.physics.checkLeftCol(self, self.level):
+                self.position[0] += self.velocity[0]
+              
+        #self.velocity[0] = 0
+        
+    def updatePosY(self):
 
+        if not self.physics.checkDownCol(self, self.level):
+            self.position[1] += self.velocity[1]
+        else:
+            self.rotation = self.rotaIndex * 90
+            self.level.addRndBlock()
+        
+        #self.velocity[1] = 0
+    
+    def updateRota(self):
         self.rotation += self.rotationVel
         if self.rotation >= 360:
             self.rotation -= 360
@@ -56,24 +75,13 @@ class Block(object):
         self.rotaIndex = self.calcRotaIndex(self.rotation)
         #print self.rotaIndex
         
-        if self.velocity[0] > 0:
-            if not self.physics.checkRightCol(self, self.level):
-                self.position[0] += self.velocity[0]
-        elif self.velocity[0] < 0:
-            if not self.physics.checkLeftCol(self, self.level):
-                self.position[0] += self.velocity[0]
-
-        if not self.physics.checkDownCol(self, self.level):
-            self.position[1] += self.velocity[1]
-        else:
-            self.rotation = self.rotaIndex * 90
-            self.level.addRndBlock()
+        self.rotationVel = 0
         
     def turnLeft(self):
-        self.rotationVel = 5
+        self.rotationVel = 90
     
     def turnRight(self):
-        self.rotationVel = -5
+        self.rotationVel = -90
     
     def moveDown(self):
         '''gets called if there is no collision for the next step'''
