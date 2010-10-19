@@ -56,6 +56,7 @@ class Block(object):
         #self.velocity[0] = 0
         
     def updatePosY(self):
+        print self.velocity
         if not self.physics.checkDownCol(self, self.level):
             self.position[1] += self.velocity[1]
         else:
