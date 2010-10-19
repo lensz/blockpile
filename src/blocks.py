@@ -58,10 +58,10 @@ class Block(object):
         #print self.rotaIndex
         
     def turnLeft(self):
-        self.rotationVel = 3
+        self.rotationVel = 5
     
     def turnRight(self):
-        self.rotationVel = -3
+        self.rotationVel = -5
     
     def moveDown(self):
         '''gets called if there is no collision for the next step'''

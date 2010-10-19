@@ -36,9 +36,10 @@ class PhysicManager(object):
             # blocks
             for enemyBlock in level.blockList:
                 if id(enemyBlock) != curBlock:
-                    futureBlock = copy.deepcopy(block)
-                    futureBlock.position[0] -= 1
-                    if self.checkColBetweenBlocks(futureBlock, enemyBlock):
+                    #futureBlock = copy.deepcopy(block)
+                    #futureBlock.position[0] -= 1
+                    futureOffset = (-1,0)
+                    if self.checkColBetweenBlocks(block, enemyBlock, futureOffset):
                         return True
 
         return False
@@ -54,9 +55,10 @@ class PhysicManager(object):
             # blocks
             for enemyBlock in level.blockList:
                 if id(enemyBlock) != curBlock:
-                    futureBlock = copy.deepcopy(block)
-                    futureBlock.position[0] += 1
-                    if self.checkColBetweenBlocks(futureBlock, enemyBlock):
+                    #futureBlock = copy.deepcopy(block)
+                    #futureBlock.position[0] += 1
+                    futureOffset = (1,0)
+                    if self.checkColBetweenBlocks(block, enemyBlock, futureOffset):
                         return True
 
         return False
@@ -70,16 +72,17 @@ class PhysicManager(object):
             # blocks
             for enemyBlock in level.blockList:
                 if id(enemyBlock) != curBlock:
-                    futureBlock = copy.deepcopy(block)
-                    futureBlock.position[1] += 1
-                    if self.checkColBetweenBlocks(futureBlock, enemyBlock):
+                    #futureBlock = copy.deepcopy(block)
+                    #futureBlock.position[1] += 1
+                    futureOffset = (0,1)
+                    if self.checkColBetweenBlocks(block, enemyBlock, futureOffset):
                         return True
         return False
     
-    def checkColBetweenBlocks(self, a, b):
+    def checkColBetweenBlocks(self, a, b, futureOffset):
         
         for quadratA in a.structureList[a.rotaIndex]:
-            posQA = (a.getAbsPos()[0]+quadratA.getAbsPos()[0], a.getAbsPos()[1]+quadratA.getAbsPos()[1])
+            posQA = (a.getAbsPos()[0]+futureOffset[0]+quadratA.getAbsPos()[0], a.getAbsPos()[1]+futureOffset[1]+quadratA.getAbsPos()[1])
             absPosQA = (posQA[0], posQA[1])
             
             rectA = pygame.Rect( absPosQA, (constants.QUADRATSIZE, constants.QUADRATSIZE) )
@@ -93,5 +96,4 @@ class PhysicManager(object):
                 
                 if rectA.colliderect(rectB):
                     return True
-                
     
