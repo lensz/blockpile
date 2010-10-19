@@ -95,21 +95,22 @@ class Rotation_test(Block):
         self.dim = (2,2)
         
         self.structureList.append([
-                                    Quadrat((0,0), color), Quadrat((0,1), color),
-                                    Quadrat((1,0), color)
-                                   ])
-        self.structureList.append([
-                                    Quadrat((0,0), color),
-                                    Quadrat((1,0), color), Quadrat((1,1), color)
+                                    Quadrat((0,0), color), Quadrat((0,1), color)
+                                                         , Quadrat((1,1), color)
                                    ])
         self.structureList.append([
                                                            Quadrat((0,1), color),
                                     Quadrat((1,0), color), Quadrat((1,1), color)
                                    ])
         self.structureList.append([
-                                    Quadrat((0,0), color), Quadrat((0,1), color)
-                                                         , Quadrat((1,1), color)
+                                    Quadrat((0,0), color),
+                                    Quadrat((1,0), color), Quadrat((1,1), color)
                                    ])
+        self.structureList.append([
+                                    Quadrat((0,0), color), Quadrat((0,1), color),
+                                    Quadrat((1,0), color)
+                                   ])
+
         self.surface = self.renderer.generateBlockSurface(self)
 
 class Point_Block(Block):

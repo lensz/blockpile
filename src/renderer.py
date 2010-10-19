@@ -62,3 +62,5 @@ class GameRenderer(Renderer):
             blockSur = pygame.transform.rotate(blockSur, block.rotation)
             self.screen.blit(blockSur , self.playboardOffset + Vec2d(block.getAbsPos()[0], block.getAbsPos()[1]))
 
+            for quad in block.structureList[block.rotaIndex]:
+                self.screen.blit(quad.surface, self.playboardOffset + Vec2d(block.getAbsPos()[0], block.getAbsPos()[1]) + Vec2d(quad.getAbsPos()))
