@@ -11,6 +11,8 @@ Todo:
 - new blocks
 - better interface
 
+### ###
+- fixed issue1 (kind of a workaround)
 ### 0.1.5 ###
 - some speed fixes
 - fixed piling collision
