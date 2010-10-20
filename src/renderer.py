@@ -34,7 +34,7 @@ class GameRenderer(Renderer):
     def __init__(self):
         Renderer.__init__(self)
         
-        self.playboardOffset = Vec2d(250,75) #in px
+        self.playboardOffset = Vec2d(275,40) #in px
         
     def update(self):
         pass

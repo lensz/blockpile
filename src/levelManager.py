@@ -19,7 +19,7 @@ class LevelManager(object):
         Constructor
         '''
         self.levelList = []
-        self.levelList.append(Level((10,15), renderer, physics))
+        self.levelList.append(Level((12,20), renderer, physics))
         
         self.curLevel = self.levelList[0]
         
