@@ -22,7 +22,7 @@ class Block(object):
         self.renderer = level.renderer
         self.physics = level.physics
         self.color = color
-        self.movespeed = constants.QUADRATSIZE
+        self.movespeed = Vec2d(constants.QUADRATSIZE, constants.QUADRATSIZE)
         
         self.velocity = Vec2d((0,0))
         self.rotationVel = 0
@@ -52,17 +52,15 @@ class Block(object):
         elif self.velocity[0] < 0:
             if not self.physics.checkLeftCol(self, self.level):
                 self.position[0] += self.velocity[0]
-              
-        #self.velocity[0] = 0
         
     def updatePosY(self):
         if not self.physics.checkDownCol(self, self.level):
             self.position[1] += self.velocity[1]
         else:
-            self.rotation = self.rotaIndex * 90
-            self.level.addRndBlock()
-        
-        #self.velocity[1] = 0
+            self.movespeed[1] /= 4
+            if self.physics.checkBlockIsSetted(self, self.level):
+                self.rotation = self.rotaIndex * 90
+                self.level.addRndBlock()
     
     def updateRota(self):
         self.rotation += self.rotationVel
@@ -89,17 +87,17 @@ class Block(object):
         #    self.level.addRndBlock()
         #    self.rotation = self.rotaIndex * 90
         #    return
-        self.velocity = Vec2d(self.velocity[0],self.movespeed)
+        self.velocity = Vec2d(self.velocity[0],self.movespeed[1])
         
     def moveLeft(self):
         #if self.physics.checkLeftCol(self, self.level):
         #    return
-        self.velocity = Vec2d(-self.movespeed,self.velocity[1])
+        self.velocity = Vec2d(-self.movespeed[0],self.velocity[1])
         
     def moveRight(self):
         #if self.physics.checkRightCol(self, self.level):
         #    return
-        self.velocity = Vec2d(self.movespeed,self.velocity[1])
+        self.velocity = Vec2d(self.movespeed[0],self.velocity[1])
         
     def moveStop(self):
         self.velocity = Vec2d(0,0)

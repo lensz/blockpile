@@ -37,7 +37,7 @@ class PhysicManager(object):
                 if id(enemyBlock) != curBlock:
                     #futureBlock = copy.deepcopy(block)
                     #futureBlock.position[0] -= 1
-                    futureOffset = (-constants.QUADRATSIZE,0)
+                    futureOffset = (block.velocity[0],0)
                     if self.checkColBetweenBlocks(block, enemyBlock, futureOffset):
                         return True
 
@@ -56,13 +56,29 @@ class PhysicManager(object):
                 if id(enemyBlock) != curBlock:
                     #futureBlock = copy.deepcopy(block)
                     #futureBlock.position[0] += 1
-                    futureOffset = (constants.QUADRATSIZE,0)
+                    futureOffset = (block.velocity[0],0)
                     if self.checkColBetweenBlocks(block, enemyBlock, futureOffset):
                         return True
 
         return False
     
     def checkDownCol(self, block, level):
+        curBlock = id(block)
+        for quadrat in block.structureList[block.rotaIndex][1]:
+            # map
+            if block.getAbsPos()[1] + quadrat.getAbsPos()[1] + block.velocity[1] >= level.getSize()[1]*constants.QUADRATSIZE:
+                return True
+            # blocks
+            for enemyBlock in level.blockList:
+                if id(enemyBlock) != curBlock:
+                    #futureBlock = copy.deepcopy(block)
+                    #futureBlock.position[1] += 1
+                    futureOffset = (0,block.velocity[1])
+                    if self.checkColBetweenBlocks(block, enemyBlock, futureOffset):
+                        return True
+        return False
+    
+    def checkBlockIsSetted(self, block, level):
         curBlock = id(block)
         for quadrat in block.structureList[block.rotaIndex][1]:
             # map
@@ -73,7 +89,7 @@ class PhysicManager(object):
                 if id(enemyBlock) != curBlock:
                     #futureBlock = copy.deepcopy(block)
                     #futureBlock.position[1] += 1
-                    futureOffset = (0,constants.QUADRATSIZE)
+                    futureOffset = (0,1)
                     if self.checkColBetweenBlocks(block, enemyBlock, futureOffset):
                         return True
         return False
