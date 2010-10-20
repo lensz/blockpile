@@ -52,19 +52,15 @@ class Block(object):
         elif self.velocity[0] < 0:
             if not self.physics.checkLeftCol(self, self.level):
                 self.position[0] += self.velocity[0]
-              
-        #self.velocity[0] = 0
         
     def updatePosY(self):
         if not self.physics.checkDownCol(self, self.level):
             self.position[1] += self.velocity[1]
         else:
-            self.velocity[1] /= 2
+            self.movespeed[1] /= 4
             if self.physics.checkBlockIsSetted(self, self.level):
                 self.rotation = self.rotaIndex * 90
                 self.level.addRndBlock()
-        
-        #self.velocity[1] = 0
     
     def updateRota(self):
         self.rotation += self.rotationVel
