@@ -34,7 +34,16 @@ class Block(object):
         self.curStateGrid = []
         self.level._initGrid(self.curStateGrid)
 
-    def move(self):
+    def moveY(self):
+        if self.velocity[1] > 0:
+            # move down
+            if not self.physics.checkDownCol(self, self.level):
+                # there is no collision
+                self.position[1] += self.velocity[1]
+            else:
+                self.level.mergeActiveBlock()
+  
+    def moveX(self):
         if self.velocity[0] > 0:
             # move right
             if not self.physics.checkRightCol(self, self.level):
@@ -50,18 +59,15 @@ class Block(object):
             else:
                 print "left col"
         
-        if self.velocity[1] > 0:
-            # move down
-            if not self.physics.checkDownCol(self, self.level):
-                # there is no collision
-                self.position[1] += self.velocity[1]
-            else:
-                self.level.mergeActiveBlock()
 
-    def update(self):
+
+    def update(self, dir):
         ''' gets called every tick(active block)'''
         self._deleteOldState()
-        self.move()
+        if dir == "X":
+            self.moveX()
+        elif dir == "Y":
+            self.moveY()
         self._updateBlockInLevelGrid()
         self._storeState()
 

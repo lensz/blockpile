@@ -138,10 +138,10 @@ class GameState(State):
 
             elif event.type == constants.BLOCK_DOWNTICK:
                 self.levelManager.curLevel.activeBlock.moveDown()
-                self.levelManager.curLevel.activeBlock.update()
-            #elif event.type == constants.BLOCK_ROTATICK:
-            #    self.levelManager.curLevel.activeBlock.updatePosX()
-            #    self.levelManager.curLevel.activeBlock.updateRota()
+                self.levelManager.curLevel.activeBlock.update("Y")
+            elif event.type == constants.BLOCK_ROTATICK:
+                self.levelManager.curLevel.activeBlock.update("X")
+                #self.levelManager.curLevel.activeBlock.updateRota()
             
             elif event.type == constants.ENDGAME:
                 self.stateManager.endGame()        
