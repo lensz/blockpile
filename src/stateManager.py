@@ -97,11 +97,12 @@ class GameState(State):
     
         self.levelManager.curLevel.addRndBlock()
         
-        pygame.time.set_timer(constants.BLOCK_DOWNTICK, 300)
-        pygame.time.set_timer(constants.BLOCK_ROTATICK, 75)
+        pygame.time.set_timer(constants.BLOCK_VERTI_TICK, 300)
+        pygame.time.set_timer(constants.BLOCK_HORI_TICK, 75)
+        pygame.time.set_timer(constants.BLOCK_ROTA_TICK, 175)
 
     def update(self):
-        #self.physicManager.update()
+        self.physicManager.update()
         self.gameRenderer.update()
     
     def handleInput(self):
@@ -118,14 +119,12 @@ class GameState(State):
                 elif event.key == pygame.K_UP:
                     self.levelManager.curLevel.activeBlock.turnLeft()
                 elif event.key == pygame.K_DOWN:
-                    self.levelManager.curLevel.activeBlock.turnRight()
-                elif event.key == pygame.K_SPACE:
-                    self.levelManager.curLevel.activeBlock.movespeed[1] = constants.QUADRATSIZE*4
+                    self.levelManager.curLevel.activeBlock.update("lowest-Y")
                 elif event.key == pygame.K_m:
                     self.levelManager.curLevel._prettyPrintGrid()
                 elif event.key == pygame.K_n:
                     print self.levelManager.curLevel.activeBlock.rotaIndex, self.levelManager.curLevel.activeBlock.structureList[self.levelManager.curLevel.activeBlock.rotaIndex]
-                    
+
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT:
                     self.levelManager.curLevel.activeBlock.moveStop()
@@ -133,26 +132,21 @@ class GameState(State):
                     self.levelManager.curLevel.activeBlock.moveStop()
                 elif event.key == pygame.K_UP:
                     self.levelManager.curLevel.activeBlock.rotaStop()
-                elif event.key == pygame.K_DOWN:
-                    self.levelManager.curLevel.activeBlock.rotaStop()
-#                elif event.key == pygame.K_SPACE:
-#                    self.levelManager.curLevel.activeBlock.movespeed[1] = constants.QUADRATSIZE
 
-            elif event.type == constants.BLOCK_DOWNTICK:
+            elif event.type == constants.BLOCK_VERTI_TICK:
                 self.levelManager.curLevel.activeBlock.moveDown()
-                self.levelManager.curLevel.activeBlock.update("Y")
-            elif event.type == constants.BLOCK_ROTATICK:
-                self.levelManager.curLevel.activeBlock.update("X")
+                self.levelManager.curLevel.activeBlock.update("normal-Y")
+            elif event.type == constants.BLOCK_HORI_TICK:
+                self.levelManager.curLevel.activeBlock.update("normal-X")
+            elif event.type == constants.BLOCK_ROTA_TICK:
                 self.levelManager.curLevel.activeBlock.updateRota()
-            
             elif event.type == constants.ENDGAME:
                 self.stateManager.endGame()        
 
     def render(self):
         self.gameRenderer.renderBG()
         self.gameRenderer.renderMap(self.levelManager.curLevel)
-        #self.gameRenderer.renderBlocks( self.levelManager.curLevel.getBlockList() )
-    
+
 class PauseState(State):
     
     def __init__(self, stateManager):

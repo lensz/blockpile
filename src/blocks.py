@@ -30,7 +30,7 @@ class Block(object):
         self.rotaIndex = self.calcRotaIndex(self.rotation)
 
         self.structureList = [] #list of structures (>for every 90degree one item)
-        
+
         self.curStateGrid = []
         self.level._initGrid(self.curStateGrid)
 
@@ -58,16 +58,16 @@ class Block(object):
                 self.position[0] += self.velocity[0]
             else:
                 print "left col"
-        
-
 
     def update(self, dir):
         ''' gets called every tick(active block)'''
         self._deleteOldState()
-        if dir == "X":
+        if dir == "normal-X":
             self.moveX()
-        elif dir == "Y":
+        elif dir == "normal-Y":
             self.moveY()
+        elif dir == "lowest-Y":
+            self.position[1] = self.physics.calcLowestPosition(self, self.level)
         self._updateBlockInLevelGrid()
         self._storeState()
 
@@ -107,7 +107,7 @@ class Block(object):
 
         self.rotaIndex = self.calcRotaIndex(self.rotation)
 
-        self.rotationVel = 0
+        #self.rotationVel = 0
 
     def turnLeft(self):
         self.rotationVel = 90

@@ -39,14 +39,8 @@ class PhysicManager(object):
                         return True
         
         #check for block-block col
-        for col in range(len(block.structureList[block.rotaIndex])):
-            for row in range(len(block.structureList[block.rotaIndex][0])):
-                if block.structureList[block.rotaIndex][col][row] != 0:
-                    relQuadPos = Vec2d((col,row))
-                    absQuadPos = relQuadPos+block.position
-                    futureAbsQuadPos = absQuadPos+offset  
-                    if level.getGridItem(futureAbsQuadPos) != 0:
-                        return True
+        if self.checkBlockBlockCol(block, level, offset):
+            return True
         return False
     
     def checkRightCol(self, block, level):
@@ -65,14 +59,8 @@ class PhysicManager(object):
                         return True
         
         #check for block-block col
-        for col in range(len(block.structureList[block.rotaIndex])):
-            for row in range(len(block.structureList[block.rotaIndex][0])):
-                if block.structureList[block.rotaIndex][col][row] != 0:
-                    relQuadPos = Vec2d((col,row))
-                    absQuadPos = relQuadPos+block.position
-                    futureAbsQuadPos = absQuadPos+offset  
-                    if level.getGridItem(futureAbsQuadPos) != 0:
-                        return True
+        if self.checkBlockBlockCol(block, level, offset):
+            return True
         return False
     
     def checkDownCol(self, block, level):
@@ -89,6 +77,11 @@ class PhysicManager(object):
                         return True
         
         #check for block-block col
+        if self.checkBlockBlockCol(block, level, offset):
+            return True
+        return False
+    
+    def checkBlockBlockCol(self, block, level, offset):
         for col in range(len(block.structureList[block.rotaIndex])):
             for row in range(len(block.structureList[block.rotaIndex][0])):
                 if block.structureList[block.rotaIndex][col][row] != 0:
@@ -96,7 +89,22 @@ class PhysicManager(object):
                     absQuadPos = relQuadPos+block.position
                     futureAbsQuadPos = absQuadPos+offset
                     if level.getGridItem(futureAbsQuadPos) != 0:
+                        print futureAbsQuadPos
+                        print level.getGridItem(futureAbsQuadPos)
                         level._prettyPrintGrid()
                         return True
         return False
+    
+    def calcLowestPosition(self, block, level):
+        offset = [0,0]
+        while True:
+            if offset[1]-1 >= level.getSize()[1]- (block.position[1]+len(block.structureList[block.rotaIndex][0])):
+                break
+            if self.checkBlockBlockCol(block, level, offset):
+                break
+            offset[1] += 1
+
+        newYpos = block.position[1]+(offset[1]-1)
+        return newYpos
+        #block.position[1] = newYpos
     

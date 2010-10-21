@@ -15,6 +15,7 @@ Todo:
 ### ###
 - new map format
 - renewed collision handling
+- fixed issue3
 ### 0.1.6 ###
 - fixed issue1 (kind of a workaround)
 ### 0.1.5 ###
