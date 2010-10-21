@@ -6,6 +6,7 @@ Created on 12.10.2010
 
 import pygame
 import util.constants as constants
+from util.vector import Vec2d
 
 class PhysicManager(object):
     '''
@@ -27,55 +28,71 @@ class PhysicManager(object):
     
     def checkLeftCol(self, block, level):
         '''returns true if there is a collision'''
-        curBlock = id(block)
-        for quadrat in block.structureList[block.rotaIndex][1]:
-            # map
-            if block.getAbsPos()[0] + quadrat.getAbsPos()[0] <= 0: 
-                return True
-            # blocks
-            for enemyBlock in level.blockList:
-                if id(enemyBlock) != curBlock:
-                    #futureBlock = copy.deepcopy(block)
-                    #futureBlock.position[0] -= 1
-                    futureOffset = (block.velocity[0],0)
-                    if self.checkColBetweenBlocks(block, enemyBlock, futureOffset):
-                        return True
-
+        offset = Vec2d(-1,0) # for calculating the "future" position
+        
+        #check if out of map
+        for col in range(len(block.structureList[block.rotaIndex])):
+            for row in range(len(block.structureList[block.rotaIndex][0])):
+                relQuadPos = Vec2d((col,row))
+                absQuadPos = relQuadPos+block.position
+                futureAbsQuadPos = absQuadPos+offset  
+                if futureAbsQuadPos[0] < 0:
+                    return True
+        
+        #check for block-block col
+        for col in range(len(block.structureList[block.rotaIndex])):
+            for row in range(len(block.structureList[block.rotaIndex][0])):
+                relQuadPos = Vec2d((col,row))
+                absQuadPos = relQuadPos+block.position
+                futureAbsQuadPos = absQuadPos+offset  
+                if level.getGridItem(futureAbsQuadPos) != 0:
+                    return True
         return False
     
     def checkRightCol(self, block, level):
         '''returns true if there is a collision'''
 
-        curBlock = id(block)
-        for quadrat in block.structureList[block.rotaIndex][1]:
-            # map
-            if block.getAbsPos()[0] + quadrat.getAbsPos()[0] + constants.QUADRATSIZE >= level.getSize()[0]*constants.QUADRATSIZE:
-                return True
-            # blocks
-            for enemyBlock in level.blockList:
-                if id(enemyBlock) != curBlock:
-                    #futureBlock = copy.deepcopy(block)
-                    #futureBlock.position[0] += 1
-                    futureOffset = (block.velocity[0],0)
-                    if self.checkColBetweenBlocks(block, enemyBlock, futureOffset):
-                        return True
-
+        offset = Vec2d(1,0) # for calculating the "future" position
+        
+        #check if out of map
+        for col in range(len(block.structureList[block.rotaIndex])):
+            for row in range(len(block.structureList[block.rotaIndex][0])):
+                relQuadPos = Vec2d((col,row))
+                absQuadPos = relQuadPos+block.position
+                futureAbsQuadPos = absQuadPos+offset  
+                if futureAbsQuadPos[0] >= level.getSize()[0]:
+                    return True
+        
+        #check for block-block col
+        for col in range(len(block.structureList[block.rotaIndex])):
+            for row in range(len(block.structureList[block.rotaIndex][0])):
+                relQuadPos = Vec2d((col,row))
+                absQuadPos = relQuadPos+block.position
+                futureAbsQuadPos = absQuadPos+offset  
+                if level.getGridItem(futureAbsQuadPos) != 0:
+                    return True
         return False
     
     def checkDownCol(self, block, level):
-        curBlock = id(block)
-        for quadrat in block.structureList[block.rotaIndex][1]:
-            # map
-            if block.getAbsPos()[1] + quadrat.getAbsPos()[1] + block.velocity[1] >= level.getSize()[1]*constants.QUADRATSIZE:
-                return True
-            # blocks
-            for enemyBlock in level.blockList:
-                if id(enemyBlock) != curBlock:
-                    #futureBlock = copy.deepcopy(block)
-                    #futureBlock.position[1] += 1
-                    futureOffset = (0,block.velocity[1])
-                    if self.checkColBetweenBlocks(block, enemyBlock, futureOffset):
-                        return True
+        offset = Vec2d(0,1) # for calculating the "future" position
+
+        #check if out of map
+        for col in range(len(block.structureList[block.rotaIndex])):
+            for row in range(len(block.structureList[block.rotaIndex][0])):
+                relQuadPos = Vec2d((col,row))
+                absQuadPos = relQuadPos+block.position
+                futureAbsQuadPos = absQuadPos+offset
+                if futureAbsQuadPos[1] >= level.getSize()[1]:
+                    return True
+        
+        #check for block-block col
+        for col in range(len(block.structureList[block.rotaIndex])):
+            for row in range(len(block.structureList[block.rotaIndex][0])):
+                relQuadPos = Vec2d((col,row))
+                absQuadPos = relQuadPos+block.position
+                futureAbsQuadPos = absQuadPos+offset
+                if level.getGridItem(futureAbsQuadPos) != 0:
+                    return True
         return False
     
     def checkBlockIsSetted(self, block, level):

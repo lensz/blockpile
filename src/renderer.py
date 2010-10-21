@@ -44,23 +44,15 @@ class GameRenderer(Renderer):
     
     def renderMap(self, level):
         pygame.draw.rect(self.screen, (255,255,225), pygame.Rect(self.playboardOffset, (level.getSize()[0]*constants.QUADRATSIZE,level.getSize()[1]*constants.QUADRATSIZE)))
+        self.renderMapGrid(level)
+    
+    def renderMapGrid(self, level):
+        grid = level.getGrid()
+        for col in range(len(grid)):
+            for row in range(len(grid[0])):
+                if grid[col][row] != 0:
+                    surface = pygame.Surface((constants.QUADRATSIZE, constants.QUADRATSIZE))
+                    surface.fill(grid[col][row])
 
-    def generateBlockSurface(self, block):
-        surface = pygame.Surface( (block.structureList[block.rotaIndex][0][0]*constants.QUADRATSIZE, block.structureList[block.rotaIndex][0][1]*constants.QUADRATSIZE))
-        surface.fill((255,0,255))
-        surface.set_colorkey((255,0,255))
-
-        for quadrat in block.structureList[block.rotaIndex][1]:
-            surface.blit( quadrat.surface, (quadrat.getPosition()[0]*constants.QUADRATSIZE, quadrat.getPosition()[1]*constants.QUADRATSIZE) )
-        
-        return surface
-
-    def renderBlocks(self, blockList):
-
-        for block in blockList:
-            blockSur = block.getSurface()
-            blockSur = pygame.transform.rotate(blockSur, block.rotation)
-            self.screen.blit(blockSur , self.playboardOffset + Vec2d(block.getAbsPos()[0], block.getAbsPos()[1]))
-
-            #for quad in block.structureList[block.rotaIndex][1]:
-            #    self.screen.blit(quad.surface, self.playboardOffset + Vec2d(block.getAbsPos()[0], block.getAbsPos()[1]) + Vec2d(quad.getAbsPos()))
+                    absPos = (col*constants.QUADRATSIZE,row*constants.QUADRATSIZE) #in px
+                    self.screen.blit(surface, self.playboardOffset + Vec2d(absPos[0], absPos[1]))

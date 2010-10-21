@@ -5,8 +5,6 @@ Created on 12.10.2010
 '''
 
 from util.vector import Vec2d
-import util.constants as constants
-import pygame
 
 class Block(object):
     '''
@@ -22,125 +20,167 @@ class Block(object):
         self.renderer = level.renderer
         self.physics = level.physics
         self.color = color
-        self.movespeed = Vec2d(constants.QUADRATSIZE, constants.QUADRATSIZE)
+        self.movespeed = Vec2d(1, 1)
         
         self.velocity = Vec2d((0,0))
         self.rotationVel = 0
 
-        self.position = Vec2d(pos) # abs px in screen
+        self.position = Vec2d(pos)
         self.rotation = 0 # in degree 0-359
         self.rotaIndex = self.calcRotaIndex(self.rotation)
 
-        self.structureList = [] #list of dim | structures (>for every 90degree one item)
+        self.structureList = [] #list of structures (>for every 90degree one item)
+        
+        self.curStateGrid = []
+        self.level._initGrid(self.curStateGrid)
+
+    def move(self):
+        if self.velocity[0] > 0:
+            # move right
+            if not self.physics.checkRightCol(self, self.level):
+                # there is no collision
+                self.position[0] += self.velocity[0]
+            else:
+                print "right col"
+        elif self.velocity[0] < 0:
+            # move left
+            if not self.physics.checkLeftCol(self, self.level):
+                # there is no collision
+                self.position[0] += self.velocity[0]
+            else:
+                print "left col"
+        
+        if self.velocity[1] > 0:
+            # move down
+            if not self.physics.checkDownCol(self, self.level):
+                # there is no collision
+                self.position[1] += self.velocity[1]
+            else:
+                self.level.mergeActiveBlock()
+
+    def update(self):
+        ''' gets called every tick(active block)'''
+        self._deleteOldState()
+        self.move()
+        self._updateBlockInLevelGrid()
+        self._storeState()
+
+    def _deleteOldState(self):
+        for col in range(len(self.curStateGrid)):
+            for row in range(len(self.curStateGrid[0])):
+                if self.curStateGrid[col][row] != 0:
+                    self.level.setGridItem((col,row), 0)
+
+    def _updateBlockInLevelGrid(self):
+        for col in range(len(self.structureList[self.rotaIndex])):
+            for row in range(len(self.structureList[self.rotaIndex][0])):
+                if self.structureList[self.rotaIndex][col][row] != 0:
+                    self.level.setGridItem(Vec2d(col,row)+self.position, self.color)
+
+    def _storeState(self):
+        for col in range(len(self.structureList[self.rotaIndex])):
+            for row in range(len(self.structureList[self.rotaIndex][0])):
+                if self.structureList[self.rotaIndex][col][row] != 0:
+                    self.curStateGrid[col+self.position[0]][row+self.position[1]] = self.color
     
     def calcRotaIndex(self, rota):
         temp = int(round(rota/90.0))
         if temp == 4:
             temp = 0
         return temp
-    
-    def getSurface(self):
-        return self.surface
-        
-    def getAbsPos(self):
+
+    def getPos(self):
         return self.position
-    
-    def updatePosX(self):
-        if self.velocity[0] > 0:
-            if not self.physics.checkRightCol(self, self.level):
-                self.position[0] += self.velocity[0]
-        elif self.velocity[0] < 0:
-            if not self.physics.checkLeftCol(self, self.level):
-                self.position[0] += self.velocity[0]
+
+#    def updateRota(self):
+#        self.rotation += self.rotationVel
+#        if self.rotation >= 360:
+#            self.rotation -= 360
+#        elif self.rotation < 0:
+#            self.rotation += 360
+#
+#        self.rotaIndex = self.calcRotaIndex(self.rotation)
+#
+#        self.rotationVel = 0
         
-    def updatePosY(self):
-        if not self.physics.checkDownCol(self, self.level):
-            self.position[1] += self.velocity[1]
-        else:
-            self.movespeed[1] /= 4
-            if self.physics.checkBlockIsSetted(self, self.level):
-                self.rotation = self.rotaIndex * 90
-                self.level.addRndBlock()
-    
-    def updateRota(self):
-        self.rotation += self.rotationVel
-        if self.rotation >= 360:
-            self.rotation -= 360
-        elif self.rotation < 0:
-            self.rotation += 360
-        #print self.rotation
-        self.rotaIndex = self.calcRotaIndex(self.rotation)
-        #print self.rotaIndex
-        
-        self.rotationVel = 0
-        
-    def turnLeft(self):
-        self.rotationVel = 90
-    
-    def turnRight(self):
-        self.rotationVel = -90
+#    def turnLeft(self):
+#        self.rotationVel = 90
+#    
+#    def turnRight(self):
+#        self.rotationVel = -90
     
     def moveDown(self):
-        '''gets called if there is no collision for the next step'''
-        
-        #if self.physics.checkDownCol(self, self.level):
-        #    self.level.addRndBlock()
-        #    self.rotation = self.rotaIndex * 90
-        #    return
+
         self.velocity = Vec2d(self.velocity[0],self.movespeed[1])
         
     def moveLeft(self):
-        #if self.physics.checkLeftCol(self, self.level):
-        #    return
+
         self.velocity = Vec2d(-self.movespeed[0],self.velocity[1])
         
     def moveRight(self):
-        #if self.physics.checkRightCol(self, self.level):
-        #    return
+
         self.velocity = Vec2d(self.movespeed[0],self.velocity[1])
         
     def moveStop(self):
         self.velocity = Vec2d(0,0)
         
-    def rotaStop(self):
-        self.rotationVel = 0
+#    def rotaStop(self):
+#        self.rotationVel = 0
         
 class Rotation_test(Block):
     
     def __init__(self, level, pos, color):
         Block.__init__(self, level, pos, color)
         
-        self.structureList.append((
-                            (2,2),
-                            [
-                                Quadrat((0,0), color), 
-                                Quadrat((0,1), color), Quadrat((1,1), color)
-                            ]
-                            ))
-        self.structureList.append((
-                            (2,2),
-                            [
-                                                       Quadrat((1,0), color),
-                                Quadrat((0,1), color), Quadrat((1,1), color)
-                            ]
-                            ))
-        self.structureList.append((
-                            (2,2),
-                            [
-                                Quadrat((0,0), color), Quadrat((1,0), color),
-                                                       Quadrat((1,1), color)
-                            ]
-                            ))
-        self.structureList.append((
-                            (2,2),
-                            [
-                                Quadrat((0,0), color), Quadrat((1,0), color),
-                                Quadrat((0,1), color)                          
-                            ]
-                            ))
-
-        self.surface = self.renderer.generateBlockSurface(self)
-
+        self.structureList.append(
+                            (
+                                (color, color),
+                                (0,     color)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (color, color),
+                                (color,     0)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (color,     0),
+                                (color, color)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (color, color),
+                                (color, 0)
+                            )
+                            )
+#        self.structureList.append(
+#                            (
+#                                (color, 0),
+#                                (color, color)
+#                            )
+#                            )
+#        self.structureList.append(
+#                            (
+#                                (0,     color),
+#                                (color, color)
+#                            )
+#                            )
+#        self.structureList.append(
+#                            (
+#                                (color, color),
+#                                (0,     color)
+#                            )
+#                            )
+#        self.structureList.append(
+#                            (
+#                                (color, color),
+#                                (color, 0)
+#                            )
+#                            )
+"""
 class Point_Block(Block):
     '''
         more for testing reasons
@@ -174,7 +214,7 @@ class Point_Block(Block):
                             ]
                             ))
         
-        self.surface = self.renderer.generateBlockSurface(self)
+        #self.surface = self.renderer.generateBlockSurface(self)
     
 class Quad_Block(Block):
     
@@ -210,7 +250,7 @@ class Quad_Block(Block):
                             ]
                             ))
         
-        self.surface = self.renderer.generateBlockSurface(self)
+        #self.surface = self.renderer.generateBlockSurface(self)
         
         
 class Pyramide_Block(Block):
@@ -249,7 +289,7 @@ class Pyramide_Block(Block):
                             ]
                             ))
         
-        self.surface = self.renderer.generateBlockSurface(self)
+        #self.surface = self.renderer.generateBlockSurface(self)
         
 class H_Block(Block):
     
@@ -290,17 +330,6 @@ class H_Block(Block):
                             ]
                             ))
         
-        self.surface = self.renderer.generateBlockSurface(self)
-
-class Quadrat(object):
-    def __init__(self, pos, color):
-        self.pos = pos
-        self.surface = pygame.Surface((constants.QUADRATSIZE, constants.QUADRATSIZE))
-        self.surface.fill(color)
-    
-    def getAbsPos(self):
-        return (self.pos[0]*constants.QUADRATSIZE,self.pos[1]*constants.QUADRATSIZE)
-    
-    def getPosition(self):
-        return self.pos
+        #self.surface = self.renderer.generateBlockSurface(self)
+"""
         

@@ -12,6 +12,9 @@ Todo:
 - new blocks
 - better interface
 
+### ###
+- new map format
+- renewed collision handling
 ### 0.1.6 ###
 - fixed issue1 (kind of a workaround)
 ### 0.1.5 ###

@@ -7,6 +7,7 @@ Created on 12.10.2010
 import random
 import blocks
 from util import constants
+import pygame
 
 class LevelManager(object):
     '''
@@ -19,8 +20,8 @@ class LevelManager(object):
         Constructor
         '''
         self.levelList = []
-        self.levelList.append(Level((2,3), renderer, physics))
-        #self.levelList.append(Level((12,20), renderer, physics))
+        #self.levelList.append(Level((2,3), renderer, physics))
+        self.levelList.append(Level((12,20), renderer, physics))
         
         self.curLevel = self.levelList[0]
         
@@ -33,24 +34,29 @@ class Level(object):
         
         #self.blockList = []
         self.grid = []
-        self._initGrid()
-        self._prettyPrintGrid()
+        self._initGrid(self.grid)
+
         self.activeBlock = None
+        
+        self.upperBorder = 5 #No static tile should be above this border
     
-    def _initGrid(self):
+    def _initGrid(self, grid):
         for x in range(self.mapDim[0]):
             line = []
             for y in range(self.mapDim[1]):
                 line.append(0)
-            self.grid.append(line)
+            grid.append(line)
     
     def _prettyPrintGrid(self):
         print "grid:"
         for y in range(len(self.grid[0])):
             line = []
             for x in range(len(self.grid)):
-                line.append(0)
-            print line
+                if self.grid[x][y] != 0:
+                    line.append(1)
+                else:
+                    line.append(0)
+            print y, line
         print "---"
 
     def addBlock(self, index):
@@ -58,19 +64,25 @@ class Level(object):
         color = (random.randint(0,255), random.randint(1,255), random.randint(0,255))
 
         if index == 0:
-            self.activeBlock = blocks.Quad_Block( self, (self.mapDim[0]//2*constants.QUADRATSIZE, 0), color )
+            self.activeBlock = blocks.Quad_Block( self, (self.mapDim[0]//2, 0), color )
         elif index == 1:
-            self.activeBlock = blocks.Pyramide_Block( self, (self.mapDim[0]//2*constants.QUADRATSIZE, 0), color )
+            self.activeBlock = blocks.Pyramide_Block( self, (self.mapDim[0]//2, 0), color )
         elif index == 2:
-            self.activeBlock = blocks.Point_Block( self, (self.mapDim[0]//2*constants.QUADRATSIZE, 0), color  )
+            self.activeBlock = blocks.Point_Block( self, (self.mapDim[0]//2, 0), color  )
         elif index == 3:
-            self.activeBlock = blocks.H_Block( self, (self.mapDim[0]//2*constants.QUADRATSIZE, 0), color  )
+            self.activeBlock = blocks.H_Block( self, (self.mapDim[0]//2, 0), color  )
         elif index == 4:
-            self.activeBlock = blocks.Rotation_test( self, (self.mapDim[0]//2*constants.QUADRATSIZE, 0), color  )
+            self.activeBlock = blocks.Rotation_test( self, (self.mapDim[0]//2, 0), color  )
 
     def addRndBlock(self):
-        self.addBlock(random.randint(0,4))
-        
+        self.addBlock(random.randint(4,4))
+
+    def mergeActiveBlock(self):
+        # check if the upper border is reached. If yes, end game
+        if self.activeBlock.position[1] <= self.upperBorder:
+            pygame.event.post(pygame.event.Event(constants.ENDGAME)) 
+        self.addRndBlock()
+
     def getBlockList(self):
         return self.blockList
     
@@ -79,3 +91,9 @@ class Level(object):
     
     def getGrid(self):
         return self.grid
+    
+    def getGridItem(self, pos):
+        return self.grid[pos[0]][pos[1]]
+    
+    def setGridItem(self, pos, color):
+        self.grid[pos[0]][pos[1]] = color
