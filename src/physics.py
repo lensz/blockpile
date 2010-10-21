@@ -89,9 +89,6 @@ class PhysicManager(object):
                     absQuadPos = relQuadPos+block.position
                     futureAbsQuadPos = absQuadPos+offset
                     if level.getGridItem(futureAbsQuadPos) != 0:
-                        print futureAbsQuadPos
-                        print level.getGridItem(futureAbsQuadPos)
-                        level._prettyPrintGrid()
                         return True
         return False
     
