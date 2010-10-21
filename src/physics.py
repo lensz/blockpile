@@ -4,8 +4,6 @@ Created on 12.10.2010
 @author: simon
 '''
 
-import pygame
-import util.constants as constants
 from util.vector import Vec2d
 
 class PhysicManager(object):
@@ -33,20 +31,22 @@ class PhysicManager(object):
         #check if out of map
         for col in range(len(block.structureList[block.rotaIndex])):
             for row in range(len(block.structureList[block.rotaIndex][0])):
-                relQuadPos = Vec2d((col,row))
-                absQuadPos = relQuadPos+block.position
-                futureAbsQuadPos = absQuadPos+offset  
-                if futureAbsQuadPos[0] < 0:
-                    return True
+                if block.structureList[block.rotaIndex][col][row] != 0:
+                    relQuadPos = Vec2d((col,row))
+                    absQuadPos = relQuadPos+block.position
+                    futureAbsQuadPos = absQuadPos+offset  
+                    if futureAbsQuadPos[0] < 0:
+                        return True
         
         #check for block-block col
         for col in range(len(block.structureList[block.rotaIndex])):
             for row in range(len(block.structureList[block.rotaIndex][0])):
-                relQuadPos = Vec2d((col,row))
-                absQuadPos = relQuadPos+block.position
-                futureAbsQuadPos = absQuadPos+offset  
-                if level.getGridItem(futureAbsQuadPos) != 0:
-                    return True
+                if block.structureList[block.rotaIndex][col][row] != 0:
+                    relQuadPos = Vec2d((col,row))
+                    absQuadPos = relQuadPos+block.position
+                    futureAbsQuadPos = absQuadPos+offset  
+                    if level.getGridItem(futureAbsQuadPos) != 0:
+                        return True
         return False
     
     def checkRightCol(self, block, level):
@@ -57,20 +57,22 @@ class PhysicManager(object):
         #check if out of map
         for col in range(len(block.structureList[block.rotaIndex])):
             for row in range(len(block.structureList[block.rotaIndex][0])):
-                relQuadPos = Vec2d((col,row))
-                absQuadPos = relQuadPos+block.position
-                futureAbsQuadPos = absQuadPos+offset  
-                if futureAbsQuadPos[0] >= level.getSize()[0]:
-                    return True
+                if block.structureList[block.rotaIndex][col][row] != 0:
+                    relQuadPos = Vec2d((col,row))
+                    absQuadPos = relQuadPos+block.position
+                    futureAbsQuadPos = absQuadPos+offset  
+                    if futureAbsQuadPos[0] >= level.getSize()[0]:
+                        return True
         
         #check for block-block col
         for col in range(len(block.structureList[block.rotaIndex])):
             for row in range(len(block.structureList[block.rotaIndex][0])):
-                relQuadPos = Vec2d((col,row))
-                absQuadPos = relQuadPos+block.position
-                futureAbsQuadPos = absQuadPos+offset  
-                if level.getGridItem(futureAbsQuadPos) != 0:
-                    return True
+                if block.structureList[block.rotaIndex][col][row] != 0:
+                    relQuadPos = Vec2d((col,row))
+                    absQuadPos = relQuadPos+block.position
+                    futureAbsQuadPos = absQuadPos+offset  
+                    if level.getGridItem(futureAbsQuadPos) != 0:
+                        return True
         return False
     
     def checkDownCol(self, block, level):
@@ -79,53 +81,22 @@ class PhysicManager(object):
         #check if out of map
         for col in range(len(block.structureList[block.rotaIndex])):
             for row in range(len(block.structureList[block.rotaIndex][0])):
-                relQuadPos = Vec2d((col,row))
-                absQuadPos = relQuadPos+block.position
-                futureAbsQuadPos = absQuadPos+offset
-                if futureAbsQuadPos[1] >= level.getSize()[1]:
-                    return True
+                if block.structureList[block.rotaIndex][col][row] != 0:
+                    relQuadPos = Vec2d((col,row))
+                    absQuadPos = relQuadPos+block.position
+                    futureAbsQuadPos = absQuadPos+offset
+                    if futureAbsQuadPos[1] >= level.getSize()[1]:
+                        return True
         
         #check for block-block col
         for col in range(len(block.structureList[block.rotaIndex])):
             for row in range(len(block.structureList[block.rotaIndex][0])):
-                relQuadPos = Vec2d((col,row))
-                absQuadPos = relQuadPos+block.position
-                futureAbsQuadPos = absQuadPos+offset
-                if level.getGridItem(futureAbsQuadPos) != 0:
-                    return True
-        return False
-    
-    def checkBlockIsSetted(self, block, level):
-        curBlock = id(block)
-        for quadrat in block.structureList[block.rotaIndex][1]:
-            # map
-            if block.getAbsPos()[1] + quadrat.getAbsPos()[1] + constants.QUADRATSIZE >= level.getSize()[1]*constants.QUADRATSIZE:
-                return True
-            # blocks
-            for enemyBlock in level.blockList:
-                if id(enemyBlock) != curBlock:
-                    #futureBlock = copy.deepcopy(block)
-                    #futureBlock.position[1] += 1
-                    futureOffset = (0,1)
-                    if self.checkColBetweenBlocks(block, enemyBlock, futureOffset):
+                if block.structureList[block.rotaIndex][col][row] != 0:
+                    relQuadPos = Vec2d((col,row))
+                    absQuadPos = relQuadPos+block.position
+                    futureAbsQuadPos = absQuadPos+offset
+                    if level.getGridItem(futureAbsQuadPos) != 0:
+                        level._prettyPrintGrid()
                         return True
         return False
-    
-    def checkColBetweenBlocks(self, a, b, futureOffset):
-        
-        for quadratA in a.structureList[a.rotaIndex][1]:
-            posQA = (a.getAbsPos()[0]+futureOffset[0]+quadratA.getAbsPos()[0], a.getAbsPos()[1]+futureOffset[1]+quadratA.getAbsPos()[1])
-            absPosQA = (posQA[0], posQA[1])
-            
-            rectA = pygame.Rect( absPosQA, (constants.QUADRATSIZE, constants.QUADRATSIZE) )
-            
-            for quadratB in b.structureList[b.rotaIndex][1]:
-                #print b.getAbsPos()
-                posQB = (b.getAbsPos()[0]+quadratB.getAbsPos()[0], b.getAbsPos()[1]+quadratB.getAbsPos()[1])
-                absPosQB = (posQB[0], posQB[1])
-            
-                rectB = pygame.Rect( absPosQB, (constants.QUADRATSIZE, constants.QUADRATSIZE) )
-                
-                if rectA.colliderect(rectB):
-                    return True
     

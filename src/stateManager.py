@@ -123,6 +123,8 @@ class GameState(State):
                     self.levelManager.curLevel.activeBlock.movespeed[1] = constants.QUADRATSIZE*4
                 elif event.key == pygame.K_m:
                     self.levelManager.curLevel._prettyPrintGrid()
+                elif event.key == pygame.K_n:
+                    print self.levelManager.curLevel.activeBlock.rotaIndex, self.levelManager.curLevel.activeBlock.structureList[self.levelManager.curLevel.activeBlock.rotaIndex]
                     
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT:
@@ -141,7 +143,7 @@ class GameState(State):
                 self.levelManager.curLevel.activeBlock.update("Y")
             elif event.type == constants.BLOCK_ROTATICK:
                 self.levelManager.curLevel.activeBlock.update("X")
-                #self.levelManager.curLevel.activeBlock.updateRota()
+                self.levelManager.curLevel.activeBlock.updateRota()
             
             elif event.type == constants.ENDGAME:
                 self.stateManager.endGame()        

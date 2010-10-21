@@ -98,22 +98,22 @@ class Block(object):
     def getPos(self):
         return self.position
 
-#    def updateRota(self):
-#        self.rotation += self.rotationVel
-#        if self.rotation >= 360:
-#            self.rotation -= 360
-#        elif self.rotation < 0:
-#            self.rotation += 360
-#
-#        self.rotaIndex = self.calcRotaIndex(self.rotation)
-#
-#        self.rotationVel = 0
-        
-#    def turnLeft(self):
-#        self.rotationVel = 90
-#    
-#    def turnRight(self):
-#        self.rotationVel = -90
+    def updateRota(self):
+        self.rotation += self.rotationVel
+        if self.rotation >= 360:
+            self.rotation -= 360
+        elif self.rotation < 0:
+            self.rotation += 360
+
+        self.rotaIndex = self.calcRotaIndex(self.rotation)
+
+        self.rotationVel = 0
+
+    def turnLeft(self):
+        self.rotationVel = 90
+    
+    def turnRight(self):
+        self.rotationVel = -90
     
     def moveDown(self):
 
@@ -130,24 +130,18 @@ class Block(object):
     def moveStop(self):
         self.velocity = Vec2d(0,0)
         
-#    def rotaStop(self):
-#        self.rotationVel = 0
+    def rotaStop(self):
+        self.rotationVel = 0
         
 class Rotation_test(Block):
     
     def __init__(self, level, pos, color):
         Block.__init__(self, level, pos, color)
-        
+
         self.structureList.append(
                             (
-                                (color, color),
-                                (0,     color)
-                            )
-                            )
-        self.structureList.append(
-                            (
-                                (color, color),
-                                (color,     0)
+                                (0,     color),
+                                (color, color)
                             )
                             )
         self.structureList.append(
@@ -159,33 +153,18 @@ class Rotation_test(Block):
         self.structureList.append(
                             (
                                 (color, color),
-                                (color, 0)
+                                (color,     0)
                             )
                             )
-#        self.structureList.append(
-#                            (
-#                                (color, 0),
-#                                (color, color)
-#                            )
-#                            )
-#        self.structureList.append(
-#                            (
-#                                (0,     color),
-#                                (color, color)
-#                            )
-#                            )
-#        self.structureList.append(
-#                            (
-#                                (color, color),
-#                                (0,     color)
-#                            )
-#                            )
-#        self.structureList.append(
-#                            (
-#                                (color, color),
-#                                (color, 0)
-#                            )
-#                            )
+        self.structureList.append(
+                            (
+                                (color, color),
+                                (0,     color)
+                            )
+                            )
+
+
+
 """
 class Point_Block(Block):
     '''
