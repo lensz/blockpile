@@ -39,6 +39,7 @@ class Level(object):
         self.activeBlock = None
         
         self.upperBorder = 5 #No static tile should be above this border
+        self.score = 0
     
     def _initGrid(self, grid):
         for x in range(self.mapDim[0]):
@@ -89,6 +90,7 @@ class Level(object):
             if rowC >= self.mapDim[0]:
                 self.deleteLine(row)
                 self.moveDownToLine(row)
+                self.score += constants.LINESCORE
                 
     def deleteLine(self, lineC):
         for col in range(self.mapDim[0]):
