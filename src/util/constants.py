@@ -4,7 +4,7 @@ Created on 11.10.2010
 @author: simon
 '''
 
-Version = "v0.1.6"
+Version = "v0.2.0"
 # TODO: move constants to a options class or something
 RESOLUTION = (800, 480)
 ISSOUND = False
