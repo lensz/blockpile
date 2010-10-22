@@ -23,7 +23,6 @@ class Block(object):
         self.movespeed = Vec2d(1, 1)
         
         self.velocity = Vec2d((0,0))
-        self.rotationVel = 0
 
         self.position = Vec2d(pos)
         self.rotation = 0 # index of structure list
@@ -48,15 +47,11 @@ class Block(object):
             if not self.physics.checkRightCol(self, self.level):
                 # there is no collision
                 self.position[0] += self.velocity[0]
-            else:
-                print "right col"
         elif self.velocity[0] < 0:
             # move left
             if not self.physics.checkLeftCol(self, self.level):
                 # there is no collision
                 self.position[0] += self.velocity[0]
-            else:
-                print "left col"
 
     def update(self, dir):
         ''' gets called every tick(active block)'''
@@ -94,25 +89,24 @@ class Block(object):
     def getPos(self):
         return self.position
 
-    def updateRota(self):
-        if self.rotationVel != 0:
-            rota = self.rotation
-            oldRota = self.rotation
-            rota += self.rotationVel
+    def updateRota(self, offset):
         
-            rota %= 4
-            
-            
-            if self.physics.checkRotaCol(self, self.level, rota):
-                self.rotation = oldRota
-            else:
-                self.rotation = rota
-        
+        rota = self.rotation
+        oldRota = self.rotation
+        rota += offset
+
+        rota %= 4
+
+        if self.physics.checkRotaCol(self, self.level, rota):
+            self.rotation = oldRota
+        else:
+            self.rotation = rota
+
     def turnLeft(self):
-        self.rotationVel = 1
-    
+        self.updateRota(1)
+
     def turnRight(self):
-        self.rotationVel = -1
+        self.updateRota(-1)
     
     def moveDown(self):
 
@@ -128,10 +122,7 @@ class Block(object):
         
     def moveStop(self):
         self.velocity = Vec2d(0,0)
-        
-    def rotaStop(self):
-        self.rotationVel = 0
-        
+
 class Rotation_test(Block):
     
     def __init__(self, level, pos, color):

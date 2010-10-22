@@ -99,7 +99,6 @@ class GameState(State):
         
         pygame.time.set_timer(constants.BLOCK_VERTI_TICK, 300)
         pygame.time.set_timer(constants.BLOCK_HORI_TICK, 75)
-        pygame.time.set_timer(constants.BLOCK_ROTA_TICK, 175)
 
     def update(self):
         self.physicManager.update()
@@ -130,16 +129,12 @@ class GameState(State):
                     self.levelManager.curLevel.activeBlock.moveStop()
                 elif event.key == pygame.K_RIGHT:
                     self.levelManager.curLevel.activeBlock.moveStop()
-                elif event.key == pygame.K_UP:
-                    self.levelManager.curLevel.activeBlock.rotaStop()
 
             elif event.type == constants.BLOCK_VERTI_TICK:
                 self.levelManager.curLevel.activeBlock.moveDown()
                 self.levelManager.curLevel.activeBlock.update("normal-Y")
             elif event.type == constants.BLOCK_HORI_TICK:
                 self.levelManager.curLevel.activeBlock.update("normal-X")
-            elif event.type == constants.BLOCK_ROTA_TICK:
-                self.levelManager.curLevel.activeBlock.updateRota()
             elif event.type == constants.ENDGAME:
                 self.stateManager.endGame()        
 
