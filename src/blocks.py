@@ -106,8 +106,9 @@ class Block(object):
             self.rotation += 360
 
         self.rotaIndex = self.calcRotaIndex(self.rotation)
-
-        #self.rotationVel = 0
+        
+        print self.structureList[self.rotaIndex]
+        self.level._prettyPrintGrid()
 
     def turnLeft(self):
         self.rotationVel = 90
