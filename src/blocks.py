@@ -92,10 +92,19 @@ class Block(object):
         return self.position
 
     def updateRota(self):
-        self.rotation += self.rotationVel
+        if self.rotationVel != 0:
+            rota = self.rotation
+            oldRota = self.rotation
+            rota += self.rotationVel
         
-        self.rotation %= 4
-
+            rota %= 4
+            
+            
+            if self.physics.checkRotaCol(self, self.level, rota):
+                self.rotation = oldRota
+            else:
+                self.rotation = rota
+        
     def turnLeft(self):
         self.rotationVel = 1
     

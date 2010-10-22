@@ -81,6 +81,33 @@ class PhysicManager(object):
             return True
         return False
     
+    def checkRotaCol(self, block, level, newRota):
+
+        futBlock = block
+        futBlock.rotation = newRota
+
+        futBlock._deleteOldState()
+
+        #check if out of map
+        for col in range(len(futBlock.structureList[futBlock.rotation])):
+            for row in range(len(futBlock.structureList[futBlock.rotation][0])):
+                if futBlock.structureList[futBlock.rotation][col][row] != 0:
+                    relQuadPos = Vec2d((col,row))
+                    absQuadPos = relQuadPos+futBlock.position
+                    futureAbsQuadPos = absQuadPos+(0,0)
+                    
+                    #right
+                    if futureAbsQuadPos[0] >= level.getSize()[0]:
+                        return True
+                    #left
+                    if futureAbsQuadPos[0] < 0:
+                        return True
+                    #down
+                    if futureAbsQuadPos[1] >= level.getSize()[1]:
+                        return True
+        
+        return self.checkBlockBlockCol(futBlock, level, (0,0))
+
     def checkBlockBlockCol(self, block, level, offset):
         for col in range(len(block.structureList[block.rotation])):
             for row in range(len(block.structureList[block.rotation][0])):
