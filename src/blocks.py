@@ -163,158 +163,106 @@ class Rotation_test(Block):
                             )
                             )
 
-
-
-"""
-class Point_Block(Block):
-    '''
-        more for testing reasons
-    '''
-    
-    def __init__(self, level, pos, color):
-        Block.__init__(self, level, pos, color)
-        
-        self.structureList.append((
-                            (1,1),
-                            [
-                                Quadrat((0,0), color)
-                            ]
-                            ))
-        self.structureList.append((
-                            (1,1),
-                            [
-                                Quadrat((0,0), color)
-                            ]
-                            ))
-        self.structureList.append((
-                            (1,1),
-                            [
-                                Quadrat((0,0), color)
-                            ]
-                            ))
-        self.structureList.append((
-                            (1,1),
-                            [
-                                Quadrat((0,0), color)
-                            ]
-                            ))
-        
-        #self.surface = self.renderer.generateBlockSurface(self)
-    
 class Quad_Block(Block):
     
     def __init__(self, level, pos, color):
         Block.__init__(self, level, pos, color)
         
-        self.structureList.append((
-                            (2,2),
-                            [
-                                Quadrat((0,0), color), Quadrat((1,0), color),
-                                Quadrat((0,1), color), Quadrat((1,1), color)
-                            ]
-                            ))
-        self.structureList.append((
-                            (2,2),
-                            [
-                                Quadrat((0,0), color), Quadrat((1,0), color),
-                                Quadrat((0,1), color), Quadrat((1,1), color)
-                            ]
-                            ))
-        self.structureList.append((
-                            (2,2),
-                            [
-                                Quadrat((0,0), color), Quadrat((1,0), color),
-                                Quadrat((0,1), color), Quadrat((1,1), color)
-                            ]
-                            ))
-        self.structureList.append((
-                            (2,2),
-                            [
-                                Quadrat((0,0), color), Quadrat((1,0), color),
-                                Quadrat((0,1), color), Quadrat((1,1), color)
-                            ]
-                            ))
-        
-        #self.surface = self.renderer.generateBlockSurface(self)
-        
-        
+        self.structureList.append(
+                            (
+                                (color, color),
+                                (color, color)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (color, color),
+                                (color, color)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (color, color),
+                                (color, color)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (color, color),
+                                (color, color)
+                            )
+                            )
+
 class Pyramide_Block(Block):
     
     def __init__(self, level, pos, color):
         Block.__init__(self, level, pos, color)
         
-        self.structureList.append((
-                            (3,2),
-                            [
-                                                       Quadrat((1,0), color),
-                                Quadrat((0,1), color), Quadrat((1,1), color), Quadrat((2,1), color)
-                            ]
-                            ))
-        self.structureList.append((
-                            (2,3),
-                            [
-                                                       Quadrat((1,0), color),
-                                Quadrat((0,1), color), Quadrat((1,1), color),
-                                                       Quadrat((1,2), color)
-                            ]
-                            ))
-        self.structureList.append((
-                            (3,2),
-                            [
-                                Quadrat((0,0), color), Quadrat((1,0), color), Quadrat((2,0), color),
-                                                       Quadrat((1,1), color)
-                            ]
-                            ))
-        self.structureList.append((
-                            (2,3),
-                            [   
-                                Quadrat((0,0), color),
-                                Quadrat((0,1), color), Quadrat((1,1), color), 
-                                Quadrat((0,2), color)
-                            ]
-                            ))
-        
-        #self.surface = self.renderer.generateBlockSurface(self)
-        
-class H_Block(Block):
+        self.structureList.append(
+                            (
+                                (0    , color,     0),
+                                (color, color, color),
+                                (0    ,     0,     0)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (0    , color,     0),
+                                (0    , color, color),
+                                (0    , color,     0)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (0    ,     0,     0),
+                                (color, color, color),
+                                (0    , color,     0)
+                                
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (0    , color,     0),
+                                (color, color,     0),
+                                (0    , color,     0)
+                            )
+                            )
+
+class I_Block(Block):
     
     def __init__(self, level, pos, color):
         Block.__init__(self, level, pos, color)
-        
 
-        self.structureList.append((
-                            (3,3),
-                            [
-                                Quadrat((0,0), color),                        Quadrat((2,0), color),
-                                Quadrat((0,1), color), Quadrat((1,1), color), Quadrat((2,1), color),
-                                Quadrat((0,2), color),                        Quadrat((2,2), color)
-                            ]
-                            ))
-        self.structureList.append((
-                            (3,3),
-                            [
-                                Quadrat((0,0), color), Quadrat((1,0), color), Quadrat((2,0), color),
-                                                       Quadrat((1,1), color),
-                                Quadrat((0,2), color), Quadrat((1,2), color), Quadrat((2,2), color)
-                            ]
-                            ))
-        self.structureList.append((
-                            (3,3),
-                            [
-                                Quadrat((0,0), color),                        Quadrat((2,0), color),
-                                Quadrat((0,1), color), Quadrat((1,1), color), Quadrat((2,1), color),
-                                Quadrat((0,2), color),                        Quadrat((2,2), color)
-                            ]
-                            ))
-        self.structureList.append((
-                            (3,3),
-                            [
-                                Quadrat((0,0), color), Quadrat((1,0), color), Quadrat((2,0), color),
-                                                       Quadrat((1,1), color),
-                                Quadrat((0,2), color), Quadrat((1,2), color), Quadrat((2,2), color)
-                            ]
-                            ))
-        
-        #self.surface = self.renderer.generateBlockSurface(self)
-"""
+        self.structureList.append(
+                            (
+                                (0    , color,     0,     0),
+                                (0    , color,     0,     0),
+                                (0    , color,     0,     0),
+                                (0    , color,     0,     0)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (0    ,     0,     0,     0),
+                                (color, color, color, color),
+                                (0    ,     0,     0,     0),
+                                (0    ,     0,     0,     0)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (0    , color,     0,     0),
+                                (0    , color,     0,     0),
+                                (0    , color,     0,     0),
+                                (0    , color,     0,     0)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (0    ,     0,     0,     0),
+                                (color, color, color, color),
+                                (0    ,     0,     0,     0),
+                                (0    ,     0,     0,     0)
+                            )
+                            )
         

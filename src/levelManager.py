@@ -63,19 +63,17 @@ class Level(object):
         # 1-255 in order to avoid fitting the color-key
         color = (random.randint(0,255), random.randint(1,255), random.randint(0,255))
 
-        if index == 0:
+        if index == 1:
             self.activeBlock = blocks.Quad_Block( self, (self.mapDim[0]//2, 0), color )
-        elif index == 1:
-            self.activeBlock = blocks.Pyramide_Block( self, (self.mapDim[0]//2, 0), color )
         elif index == 2:
-            self.activeBlock = blocks.Point_Block( self, (self.mapDim[0]//2, 0), color  )
+            self.activeBlock = blocks.Pyramide_Block( self, (self.mapDim[0]//2, 0), color )
         elif index == 3:
-            self.activeBlock = blocks.H_Block( self, (self.mapDim[0]//2, 0), color  )
+            self.activeBlock = blocks.I_Block( self, (self.mapDim[0]//2, 0), color  )
         elif index == 4:
             self.activeBlock = blocks.Rotation_test( self, (self.mapDim[0]//2, 0), color  )
 
     def addRndBlock(self):
-        self.addBlock(random.randint(4,4))
+        self.addBlock(random.randint(1,4))
 
     def mergeActiveBlock(self):
         # check if the upper border is reached. If yes, end game
