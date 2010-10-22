@@ -11,6 +11,8 @@ Todo:
 - score
 - better interface
 
+### ###
+- added complete lines check (delete and move lines above down)
 ### 0.2.1 ###
 - added classic "tetris"-blocks
 - fixed issue2 (rotation colCheck)

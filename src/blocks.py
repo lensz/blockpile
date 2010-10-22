@@ -41,7 +41,7 @@ class Block(object):
                 self.position[1] += self.velocity[1]
             else:
                 self.level.mergeActiveBlock()
-  
+
     def moveX(self):
         if self.velocity[0] > 0:
             # move right
@@ -67,8 +67,11 @@ class Block(object):
             self.moveY()
         elif dir == "lowest-Y":
             self.position[1] = self.physics.calcLowestPosition(self, self.level)
+        self.level.checkForCompletesLines()
         self._updateBlockInLevelGrid()
         self._storeState()
+        
+        
 
     def _deleteOldState(self):
         for col in range(len(self.curStateGrid)):

@@ -77,9 +77,27 @@ class Level(object):
         elif index == 7:
             self.activeBlock = blocks.J_Block( self, (self.mapDim[0]//2, 0), color  )
 
-
     def addRndBlock(self):
         self.addBlock(random.randint(1,7))
+
+    def checkForCompletesLines(self):
+        for row in range(len(self.getGrid()[0])):
+            rowC = 0
+            for col in range(len(self.getGrid())):
+                if self.getGridItem((col,row)) != 0:
+                    rowC += 1
+            if rowC >= self.mapDim[0]:
+                self.deleteLine(row)
+                self.moveDownToLine(row)
+                
+    def deleteLine(self, lineC):
+        for col in range(self.mapDim[0]):
+            self.setGridItem((col,lineC), 0)
+        
+    def moveDownToLine(self, line):
+        for row in range(line,1,-1):
+            for col in range(self.mapDim[0]):
+                self.setGridItem((col,row), self.getGridItem((col,row-1)))
 
     def mergeActiveBlock(self):
         # check if the upper border is reached. If yes, end game
