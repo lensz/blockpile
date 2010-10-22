@@ -3,7 +3,7 @@ Blockpile
 
 Classic Branch
 
-version: 0.2.0
+version: 0.2.1
 
 Todo:
 - menu
@@ -11,8 +11,9 @@ Todo:
 - score
 - better interface
 
-### ###
+### 0.2.1 ###
 - added classic "tetris"-blocks
+- fixed issue2 (rotation colCheck)
 ### 0.2.0 ###
 - new map format
 - renewed collision handling
