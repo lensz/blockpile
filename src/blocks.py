@@ -26,8 +26,7 @@ class Block(object):
         self.rotationVel = 0
 
         self.position = Vec2d(pos)
-        self.rotation = 0 # in degree 0-359
-        self.rotaIndex = self.calcRotaIndex(self.rotation)
+        self.rotation = 0 # index of structure list
 
         self.structureList = [] #list of structures (>for every 90degree one item)
 
@@ -78,43 +77,30 @@ class Block(object):
                     self.level.setGridItem((col,row), 0)
 
     def _updateBlockInLevelGrid(self):
-        for col in range(len(self.structureList[self.rotaIndex])):
-            for row in range(len(self.structureList[self.rotaIndex][0])):
-                if self.structureList[self.rotaIndex][col][row] != 0:
+        for col in range(len(self.structureList[self.rotation])):
+            for row in range(len(self.structureList[self.rotation][0])):
+                if self.structureList[self.rotation][col][row] != 0:
                     self.level.setGridItem(Vec2d(col,row)+self.position, self.color)
 
     def _storeState(self):
-        for col in range(len(self.structureList[self.rotaIndex])):
-            for row in range(len(self.structureList[self.rotaIndex][0])):
-                if self.structureList[self.rotaIndex][col][row] != 0:
+        for col in range(len(self.structureList[self.rotation])):
+            for row in range(len(self.structureList[self.rotation][0])):
+                if self.structureList[self.rotation][col][row] != 0:
                     self.curStateGrid[col+self.position[0]][row+self.position[1]] = self.color
-    
-    def calcRotaIndex(self, rota):
-        temp = int(round(rota/90.0))
-        if temp == 4:
-            temp = 0
-        return temp
 
     def getPos(self):
         return self.position
 
     def updateRota(self):
         self.rotation += self.rotationVel
-        if self.rotation >= 360:
-            self.rotation -= 360
-        elif self.rotation < 0:
-            self.rotation += 360
-
-        self.rotaIndex = self.calcRotaIndex(self.rotation)
         
-        print self.structureList[self.rotaIndex]
-        self.level._prettyPrintGrid()
+        self.rotation %= 4
 
     def turnLeft(self):
-        self.rotationVel = 90
+        self.rotationVel = 1
     
     def turnRight(self):
-        self.rotationVel = -90
+        self.rotationVel = -1
     
     def moveDown(self):
 

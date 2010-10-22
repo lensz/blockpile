@@ -29,9 +29,9 @@ class PhysicManager(object):
         offset = Vec2d(-1,0) # for calculating the "future" position
         
         #check if out of map
-        for col in range(len(block.structureList[block.rotaIndex])):
-            for row in range(len(block.structureList[block.rotaIndex][0])):
-                if block.structureList[block.rotaIndex][col][row] != 0:
+        for col in range(len(block.structureList[block.rotation])):
+            for row in range(len(block.structureList[block.rotation][0])):
+                if block.structureList[block.rotation][col][row] != 0:
                     relQuadPos = Vec2d((col,row))
                     absQuadPos = relQuadPos+block.position
                     futureAbsQuadPos = absQuadPos+offset  
@@ -49,9 +49,9 @@ class PhysicManager(object):
         offset = Vec2d(1,0) # for calculating the "future" position
         
         #check if out of map
-        for col in range(len(block.structureList[block.rotaIndex])):
-            for row in range(len(block.structureList[block.rotaIndex][0])):
-                if block.structureList[block.rotaIndex][col][row] != 0:
+        for col in range(len(block.structureList[block.rotation])):
+            for row in range(len(block.structureList[block.rotation][0])):
+                if block.structureList[block.rotation][col][row] != 0:
                     relQuadPos = Vec2d((col,row))
                     absQuadPos = relQuadPos+block.position
                     futureAbsQuadPos = absQuadPos+offset  
@@ -67,9 +67,9 @@ class PhysicManager(object):
         offset = Vec2d(0,1) # for calculating the "future" position
 
         #check if out of map
-        for col in range(len(block.structureList[block.rotaIndex])):
-            for row in range(len(block.structureList[block.rotaIndex][0])):
-                if block.structureList[block.rotaIndex][col][row] != 0:
+        for col in range(len(block.structureList[block.rotation])):
+            for row in range(len(block.structureList[block.rotation][0])):
+                if block.structureList[block.rotation][col][row] != 0:
                     relQuadPos = Vec2d((col,row))
                     absQuadPos = relQuadPos+block.position
                     futureAbsQuadPos = absQuadPos+offset
@@ -82,9 +82,9 @@ class PhysicManager(object):
         return False
     
     def checkBlockBlockCol(self, block, level, offset):
-        for col in range(len(block.structureList[block.rotaIndex])):
-            for row in range(len(block.structureList[block.rotaIndex][0])):
-                if block.structureList[block.rotaIndex][col][row] != 0:
+        for col in range(len(block.structureList[block.rotation])):
+            for row in range(len(block.structureList[block.rotation][0])):
+                if block.structureList[block.rotation][col][row] != 0:
                     relQuadPos = Vec2d((col,row))
                     absQuadPos = relQuadPos+block.position
                     futureAbsQuadPos = absQuadPos+offset
@@ -95,7 +95,7 @@ class PhysicManager(object):
     def calcLowestPosition(self, block, level):
         offset = [0,0]
         while True:
-            if offset[1]-1 >= level.getSize()[1]- (block.position[1]+len(block.structureList[block.rotaIndex][0])):
+            if offset[1]-1 >= level.getSize()[1]- (block.position[1]+len(block.structureList[block.rotation][0])):
                 break
             if self.checkBlockBlockCol(block, level, offset):
                 break
