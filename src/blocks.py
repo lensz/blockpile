@@ -163,7 +163,7 @@ class Rotation_test(Block):
                             )
                             )
 
-class Quad_Block(Block):
+class O_Block(Block):
     
     def __init__(self, level, pos, color):
         Block.__init__(self, level, pos, color)
@@ -193,7 +193,7 @@ class Quad_Block(Block):
                             )
                             )
 
-class Pyramide_Block(Block):
+class T_Block(Block):
     
     def __init__(self, level, pos, color):
         Block.__init__(self, level, pos, color)
@@ -266,3 +266,138 @@ class I_Block(Block):
                             )
                             )
         
+class S_Block(Block):
+    
+    def __init__(self, level, pos, color):
+        Block.__init__(self, level, pos, color)
+
+        self.structureList.append(
+                            (
+                                (0    , color,     0),
+                                (color, color,     0),
+                                (color,     0,     0)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (0    ,     0,     0),
+                                (color, color,     0),
+                                (0    , color, color)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (0    , color,     0),
+                                (color, color,     0),
+                                (color,     0,     0)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (0    ,     0,     0),
+                                (color, color,     0),
+                                (0    , color, color)
+                            )
+                            )
+
+class Z_Block(Block):
+    
+    def __init__(self, level, pos, color):
+        Block.__init__(self, level, pos, color)
+
+        self.structureList.append(
+                            (
+                                (color,     0,     0),
+                                (color, color,     0),
+                                (0    , color,     0)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (0    ,     0,     0),
+                                (0    , color, color),
+                                (color, color,     0)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (color,     0,     0),
+                                (color, color,     0),
+                                (0    , color,     0)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (0    ,     0,     0),
+                                (0    , color, color),
+                                (color, color,     0)
+                            )
+                            )
+        
+class L_Block(Block):
+    
+    def __init__(self, level, pos, color):
+        Block.__init__(self, level, pos, color)
+
+        self.structureList.append(
+                            (
+                                (0    , color, color),
+                                (0    , color,     0),
+                                (0    , color,     0)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (0    ,     0,     0),
+                                (color, color, color),
+                                (0    ,     0, color)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (0    , color,     0),
+                                (0    , color,     0),
+                                (color, color,     0)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (color,     0,     0),
+                                (color, color, color),
+                                (0    ,     0,     0)
+                            )
+                            )
+
+class J_Block(Block):
+    
+    def __init__(self, level, pos, color):
+        Block.__init__(self, level, pos, color)
+
+        self.structureList.append(
+                            (
+                                (0    , color,     0),
+                                (0    , color,     0),
+                                (0    , color, color)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (0    ,     0,     0),
+                                (color, color, color),
+                                (color,     0,     0)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (color, color,     0),
+                                (0    , color,     0),
+                                (0    , color,     0)
+                            )
+                            )
+        self.structureList.append(
+                            (
+                                (0    ,     0, color),
+                                (color, color, color),
+                                (0    ,     0,     0)
+                            )
+                            )

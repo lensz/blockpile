@@ -9,9 +9,10 @@ Todo:
 - menu
 - intro
 - score
-- new blocks
 - better interface
 
+### ###
+- added classic "tetris"-blocks
 ### 0.2.0 ###
 - new map format
 - renewed collision handling

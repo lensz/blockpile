@@ -60,20 +60,26 @@ class Level(object):
         print "---"
 
     def addBlock(self, index):
-        # 1-255 in order to avoid fitting the color-key
-        color = (random.randint(0,255), random.randint(1,255), random.randint(0,255))
+        color = (random.randint(0,255), random.randint(0,255), random.randint(0,255))
 
         if index == 1:
-            self.activeBlock = blocks.Quad_Block( self, (self.mapDim[0]//2, 0), color )
+            self.activeBlock = blocks.O_Block( self, (self.mapDim[0]//2, 0), color )
         elif index == 2:
-            self.activeBlock = blocks.Pyramide_Block( self, (self.mapDim[0]//2, 0), color )
+            self.activeBlock = blocks.T_Block( self, (self.mapDim[0]//2, 0), color )
         elif index == 3:
             self.activeBlock = blocks.I_Block( self, (self.mapDim[0]//2, 0), color  )
         elif index == 4:
-            self.activeBlock = blocks.Rotation_test( self, (self.mapDim[0]//2, 0), color  )
+            self.activeBlock = blocks.S_Block( self, (self.mapDim[0]//2, 0), color  )
+        elif index == 5:
+            self.activeBlock = blocks.Z_Block( self, (self.mapDim[0]//2, 0), color  )
+        elif index == 6:
+            self.activeBlock = blocks.L_Block( self, (self.mapDim[0]//2, 0), color  )
+        elif index == 7:
+            self.activeBlock = blocks.J_Block( self, (self.mapDim[0]//2, 0), color  )
+
 
     def addRndBlock(self):
-        self.addBlock(random.randint(1,4))
+        self.addBlock(random.randint(1,7))
 
     def mergeActiveBlock(self):
         # check if the upper border is reached. If yes, end game
