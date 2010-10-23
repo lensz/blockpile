@@ -18,7 +18,11 @@ class Renderer(object):
         '''
         Constructor
         '''
-        self.screen = pygame.display.set_mode(constants.RESOLUTION, constants.ISFULLSCR)
+
+        if constants.ISFULLSCR:
+            self.screen = pygame.display.set_mode(constants.RESOLUTION, pygame.FULLSCREEN)
+        else:
+            self.screen = pygame.display.set_mode(constants.RESOLUTION)
 
     def update(self):
         pass
