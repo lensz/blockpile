@@ -8,6 +8,8 @@ import pygame
 import renderer
 import levelManager
 import physics
+import interface
+import score
 import util.constants as constants
 
 class Statemanager(object):
@@ -92,8 +94,10 @@ class GameState(State):
 
         self.gameRenderer = renderer.GameRenderer()
         self.physicManager = physics.PhysicManager()
+        self.score = score.Score()
+        self.interface = interface.Interface(self.score)
 
-        self.levelManager = levelManager.LevelManager(self.gameRenderer, self.physicManager)
+        self.levelManager = levelManager.LevelManager(self.gameRenderer, self.physicManager, self.score)
     
         self.levelManager.curLevel.addRndBlock()
         
@@ -141,6 +145,7 @@ class GameState(State):
     def render(self):
         self.gameRenderer.renderBG()
         self.gameRenderer.renderMap(self.levelManager.curLevel)
+        self.interface.render(self.gameRenderer.screen)
 
 class PauseState(State):
     
