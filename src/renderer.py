@@ -23,6 +23,8 @@ class Renderer(object):
             self.screen = pygame.display.set_mode(constants.RESOLUTION, pygame.FULLSCREEN)
         else:
             self.screen = pygame.display.set_mode(constants.RESOLUTION)
+        pygame.display.set_caption("Blockpile")
+        pygame.mouse.set_visible(False)
 
     def update(self):
         pass
