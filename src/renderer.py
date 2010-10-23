@@ -46,6 +46,13 @@ class GameRenderer(Renderer):
         pygame.draw.rect(self.screen, (255,255,225), pygame.Rect(self.playboardOffset, (level.getSize()[0]*constants.QUADRATSIZE,level.getSize()[1]*constants.QUADRATSIZE)))
         self.renderMapGrid(level)
     
+    def renderGrid(self, level):
+        for col in range(level.getSize()[0]):
+            pygame.draw.line(self.screen, [0,0,0], Vec2d(col*constants.QUADRATSIZE, 0)+self.playboardOffset, Vec2d(col*constants.QUADRATSIZE, level.getSize()[1]*constants.QUADRATSIZE)+self.playboardOffset)
+
+        for row in range(level.getSize()[1]):
+            pygame.draw.line(self.screen, [0,0,0], Vec2d(0, row*constants.QUADRATSIZE)+self.playboardOffset, Vec2d(level.getSize()[0]*constants.QUADRATSIZE, row*constants.QUADRATSIZE)+self.playboardOffset)
+
     def renderMapGrid(self, level):
         grid = level.getGrid()
         for col in range(len(grid)):

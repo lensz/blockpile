@@ -145,6 +145,7 @@ class GameState(State):
     def render(self):
         self.gameRenderer.renderBG()
         self.gameRenderer.renderMap(self.levelManager.curLevel)
+        self.gameRenderer.renderGrid(self.levelManager.curLevel)
         self.interface.render(self.gameRenderer.screen)
 
 class PauseState(State):
