@@ -14,7 +14,7 @@ class Interface(object):
         self.score = score
         self.schriftart = pygame.font.Font(None,30)
         self.overlay = pygame.Surface((200,constants.RESOLUTION[1]//2))
-        self.overlay.fill((175,175,175))
+        self.overlay.fill((255,192,124))
         
         self.overlayPos = Vec2d(constants.RESOLUTION[0]-(self.overlay.get_width()+30), constants.RESOLUTION[1]//4 - 5)
         self.scorePos = Vec2d(constants.RESOLUTION[0]-(self.overlay.get_width() + 25), constants.RESOLUTION[1]//4)
