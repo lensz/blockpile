@@ -15,19 +15,20 @@ class LevelManager(object):
     '''
 
 
-    def __init__(self, renderer, physics):
+    def __init__(self, renderer, physics, score):
         '''
         Constructor
         '''
         self.levelList = []
         #self.levelList.append(Level((2,3), renderer, physics))
-        self.levelList.append(Level((12,20), renderer, physics))
+        self.levelList.append(Level((12,20), renderer, physics, score))
         
         self.curLevel = self.levelList[0]
         
 class Level(object):
 
-    def __init__(self, dim, renderer, physics):
+    def __init__(self, dim, renderer, physics, score):
+        self.score = score
         self.renderer = renderer
         self.physics = physics
         self.mapDim = dim
@@ -39,8 +40,7 @@ class Level(object):
         self.activeBlock = None
         
         self.upperBorder = 5 #No static tile should be above this border
-        self.score = 0
-    
+
     def _initGrid(self, grid):
         for x in range(self.mapDim[0]):
             line = []
@@ -90,7 +90,8 @@ class Level(object):
             if rowC >= self.mapDim[0]:
                 self.deleteLine(row)
                 self.moveDownToLine(row)
-                self.score += constants.LINESCORE
+                self.score.score += constants.LINESCORE
+                self.score.completedLines += 1
                 
     def deleteLine(self, lineC):
         for col in range(self.mapDim[0]):
