@@ -12,6 +12,7 @@ Todo:
 - better interface
 
 ### ###
+- added lines and score counter
 - added complete lines check (delete and move lines above down)
 ### 0.2.1 ###
 - added classic "tetris"-blocks
