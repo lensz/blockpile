@@ -42,6 +42,18 @@ class GameRenderer(Renderer):
         
         self.playboardOffset = Vec2d(275,40) #in px
         
+        self.blockColors = {"O_Block" : (211,93,93),
+                            "T_Block" : (231,98,42),
+                            "I_Block" : (130,225,79),
+                            "S_Block" : (21,139,37),
+                            "Z_Block" : (23,134,143),
+                            "L_Block" : (69,93,143),
+                            "J_Block" : (127,72,216)
+                            }
+    
+    def getBlockColor(self, type):
+        return self.blockColors[type]
+    
     def update(self):
         pass
     

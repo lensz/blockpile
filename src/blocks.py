@@ -12,14 +12,14 @@ class Block(object):
     '''
 
 
-    def __init__(self, level, pos, color):
+    def __init__(self, level, pos):
         '''
         Constructor
         '''
         self.level = level
         self.renderer = level.renderer
         self.physics = level.physics
-        self.color = color
+
         self.movespeed = Vec2d(1, 1)
         
         self.velocity = Vec2d((0,0))
@@ -123,40 +123,12 @@ class Block(object):
     def moveStop(self):
         self.velocity = Vec2d(0,0)
 
-class Rotation_test(Block):
-    
-    def __init__(self, level, pos, color):
-        Block.__init__(self, level, pos, color)
-
-        self.structureList.append(
-                            (
-                                (0,     color),
-                                (color, color)
-                            )
-                            )
-        self.structureList.append(
-                            (
-                                (color,     0),
-                                (color, color)
-                            )
-                            )
-        self.structureList.append(
-                            (
-                                (color, color),
-                                (color,     0)
-                            )
-                            )
-        self.structureList.append(
-                            (
-                                (color, color),
-                                (0,     color)
-                            )
-                            )
-
 class O_Block(Block):
     
-    def __init__(self, level, pos, color):
-        Block.__init__(self, level, pos, color)
+    def __init__(self, level, pos):
+        Block.__init__(self, level, pos)
+
+        color = self.color = self.renderer.getBlockColor("O_Block")
         
         self.structureList.append(
                             (
@@ -185,8 +157,10 @@ class O_Block(Block):
 
 class T_Block(Block):
     
-    def __init__(self, level, pos, color):
-        Block.__init__(self, level, pos, color)
+    def __init__(self, level, pos):
+        Block.__init__(self, level, pos)
+        
+        color = self.color = self.renderer.getBlockColor("T_Block")
         
         self.structureList.append(
                             (
@@ -220,8 +194,10 @@ class T_Block(Block):
 
 class I_Block(Block):
     
-    def __init__(self, level, pos, color):
-        Block.__init__(self, level, pos, color)
+    def __init__(self, level, pos):
+        Block.__init__(self, level, pos)
+        
+        color = self.color = self.renderer.getBlockColor("I_Block")
 
         self.structureList.append(
                             (
@@ -258,8 +234,10 @@ class I_Block(Block):
         
 class S_Block(Block):
     
-    def __init__(self, level, pos, color):
-        Block.__init__(self, level, pos, color)
+    def __init__(self, level, pos):
+        Block.__init__(self, level, pos)
+
+        color = self.color = self.renderer.getBlockColor("S_Block")
 
         self.structureList.append(
                             (
@@ -292,8 +270,10 @@ class S_Block(Block):
 
 class Z_Block(Block):
     
-    def __init__(self, level, pos, color):
-        Block.__init__(self, level, pos, color)
+    def __init__(self, level, pos):
+        Block.__init__(self, level, pos)
+        
+        color = self.color = self.renderer.getBlockColor("Z_Block")
 
         self.structureList.append(
                             (
@@ -326,8 +306,10 @@ class Z_Block(Block):
         
 class L_Block(Block):
     
-    def __init__(self, level, pos, color):
-        Block.__init__(self, level, pos, color)
+    def __init__(self, level, pos):
+        Block.__init__(self, level, pos)
+
+        color = self.color = self.renderer.getBlockColor("L_Block")
 
         self.structureList.append(
                             (
@@ -360,8 +342,10 @@ class L_Block(Block):
 
 class J_Block(Block):
     
-    def __init__(self, level, pos, color):
-        Block.__init__(self, level, pos, color)
+    def __init__(self, level, pos):
+        Block.__init__(self, level, pos)
+        
+        color = self.color = self.renderer.getBlockColor("J_Block")
 
         self.structureList.append(
                             (

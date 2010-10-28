@@ -64,19 +64,19 @@ class Level(object):
         color = (random.randint(0,255), random.randint(0,255), random.randint(0,255))
 
         if index == 1:
-            self.activeBlock = blocks.O_Block( self, (self.mapDim[0]//2, 0), color )
+            self.activeBlock = blocks.O_Block( self, (self.mapDim[0]//2, 0) )
         elif index == 2:
-            self.activeBlock = blocks.T_Block( self, (self.mapDim[0]//2, 0), color )
+            self.activeBlock = blocks.T_Block( self, (self.mapDim[0]//2, 0) )
         elif index == 3:
-            self.activeBlock = blocks.I_Block( self, (self.mapDim[0]//2, 0), color  )
+            self.activeBlock = blocks.I_Block( self, (self.mapDim[0]//2, 0) )
         elif index == 4:
-            self.activeBlock = blocks.S_Block( self, (self.mapDim[0]//2, 0), color  )
+            self.activeBlock = blocks.S_Block( self, (self.mapDim[0]//2, 0) )
         elif index == 5:
-            self.activeBlock = blocks.Z_Block( self, (self.mapDim[0]//2, 0), color  )
+            self.activeBlock = blocks.Z_Block( self, (self.mapDim[0]//2, 0) )
         elif index == 6:
-            self.activeBlock = blocks.L_Block( self, (self.mapDim[0]//2, 0), color  )
+            self.activeBlock = blocks.L_Block( self, (self.mapDim[0]//2, 0) )
         elif index == 7:
-            self.activeBlock = blocks.J_Block( self, (self.mapDim[0]//2, 0), color  )
+            self.activeBlock = blocks.J_Block( self, (self.mapDim[0]//2, 0) )
 
     def addRndBlock(self):
         self.addBlock(random.randint(1,7))
