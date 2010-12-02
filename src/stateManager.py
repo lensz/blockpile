@@ -11,6 +11,7 @@ import physics
 import interface
 import score
 import util.constants as constants
+from intro import Intro
 
 class Statemanager(object):
     '''
@@ -39,6 +40,8 @@ class Statemanager(object):
         self.switchState(self.GAMESTATE)
         
         self.clock = pygame.time.Clock()
+        
+        self.intro = Intro()
         
     def switchState(self, index):
         self.curState = self.stateList[index]
@@ -110,7 +113,7 @@ class GameState(State):
     
     def handleInput(self):
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+            if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_q):
                 self.stateManager.run = False
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
@@ -119,14 +122,16 @@ class GameState(State):
                     self.levelManager.curLevel.activeBlock.moveLeft()
                 elif event.key == pygame.K_RIGHT:
                     self.levelManager.curLevel.activeBlock.moveRight()
-                elif event.key == pygame.K_UP:
+                elif event.key == pygame.K_UP or event.key == pygame.K_END or event.key == pygame.K_HOME or event.key == pygame.K_PAGEUP:
                     self.levelManager.curLevel.activeBlock.turnLeft()
-                elif event.key == pygame.K_DOWN:
+                elif event.key == pygame.K_DOWN or event.key == pygame.K_PAGEDOWN:
                     self.levelManager.curLevel.activeBlock.update("lowest-Y")
-                elif event.key == pygame.K_m:
-                    self.levelManager.curLevel._prettyPrintGrid()
-                elif event.key == pygame.K_n:
-                    print self.levelManager.curLevel.activeBlock.rotaIndex, self.levelManager.curLevel.activeBlock.structureList[self.levelManager.curLevel.activeBlock.rotaIndex]
+                
+                if constants.ISDEBUG:
+                    if event.key == pygame.K_m:
+                        self.levelManager.curLevel._prettyPrintGrid()
+                    elif event.key == pygame.K_n:
+                        print self.levelManager.curLevel.activeBlock.rotaIndex, self.levelManager.curLevel.activeBlock.structureList[self.levelManager.curLevel.activeBlock.rotaIndex]
 
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT:

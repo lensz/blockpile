@@ -9,7 +9,7 @@ Version = "v0.2.2"
 RESOLUTION = (800, 480)
 ISSOUND = False
 ISDEBUG = False
-ISFULLSCR = False
+ISFULLSCR = True
 
 # size in pixel for 1 quadrat
 QUADRATSIZE = 20
