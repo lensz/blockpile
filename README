@@ -3,13 +3,16 @@ Blockpile
 
 Classic Branch
 
-version: 0.2.2
+version: 0.2.3
 
 Todo:
 - menu
 - intro
 - better interface
 
+### 0.2.3 ###
+- added title screen structure
+- added pandora button mappings
 ### 0.2.2 ###
 - added lines and score counter
 - added complete lines check (delete and move lines above down)
