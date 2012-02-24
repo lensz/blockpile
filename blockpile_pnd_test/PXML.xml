@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PXML xmlns="http://openpandora.org/namespaces/PXML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="psx-image-script-26255" xsi:noNamespaceSchemaLocation="PXML_schema.xsd">
+  <title lang="en_US">psx-image-script</title>
+  <title lang="de_DE">psx-image-script - German (lol!)</title>
+ 
+  <exec command="./start.sh"/>
+ 
+  <description lang="en_US">en_US Automatically generated pxml from/home/simon/Desktop exe=psx-image-script</description>
+  <description lang="de_DE">de_DE Automatisch generiertes pxml aus/home/simon/Desktop exe=psx-image-script</description>
+ 
+
+  <author name="simon" website="http://www.openpandora.org"/><!--Optional email and website, name required-->
+ 
+  <version major="1" minor="1" release="1" build="2"/><!--This programs version-->
+  <osversion major="1" minor="0" release="0" build="0"/><!--The minimum OS version required-->
+ 
+  <categories>
+    <category name="Game"><!--category like "Games", "Graphics", "Internet" etc-->
+    <subcategory name="ArcadeGame"/><!--subcategory, like "Board Games", "Strategy", "First Person Shooters"-->
+    </category>
+  </categories>
+ 
+  <clockspeed frequency="600"/><!--Frequency in Hz-->
+</PXML>
