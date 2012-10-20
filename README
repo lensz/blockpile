@@ -1,6 +1,11 @@
 Blockpile
 (Tetris clone)
 
+Dependencies:
+	Python: 2.6.5 < X < 3.0 [http://www.python.org/download/]
+	Pygame: 1.9.1release [http://www.pygame.org/download.shtml]
+ 
+
 Classic Branch
 
 version: 0.2.3
