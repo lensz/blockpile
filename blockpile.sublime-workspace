@@ -1,0 +1,853 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pro",
+				"prodID"
+			],
+			[
+				"tex",
+				"text-decoration"
+			],
+			[
+				"hea",
+				"headline"
+			],
+			[
+				"de",
+				"debug_text"
+			],
+			[
+				"lis",
+				"list-style-type"
+			],
+			[
+				"st",
+				"stichpunkt_liste"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"Re",
+				"RewriteRule"
+			],
+			[
+				"con",
+				"contentBaseFoler"
+			],
+			[
+				"base",
+				"baseUrl"
+			],
+			[
+				"fil",
+				"fileName"
+			],
+			[
+				"en",
+				"endsWith"
+			],
+			[
+				"push",
+				"pushState"
+			],
+			[
+				"website",
+				"website_coaching"
+			],
+			[
+				"ro",
+				"rootUrl"
+			],
+			[
+				"b",
+				"base	Tag"
+			],
+			[
+				"sale",
+				"salesman_picture"
+			],
+			[
+				"re",
+				"render_template"
+			],
+			[
+				"try",
+				"try	Try/Except"
+			],
+			[
+				"app",
+				"app_root"
+			],
+			[
+				"ser",
+				"serve_forever"
+			],
+			[
+				"c",
+				"cgi-bin"
+			],
+			[
+				"db",
+				"db_file_name"
+			],
+			[
+				"DB",
+				"DB_request_test"
+			],
+			[
+				"u",
+				"u"
+			],
+			[
+				"connect",
+				"connection"
+			],
+			[
+				"d",
+				"db_symlink_name"
+			],
+			[
+				"for",
+				"format"
+			],
+			[
+				"connec",
+				"connection"
+			],
+			[
+				"if",
+				"ifmain	if __name__ == '__main__'"
+			],
+			[
+				"menu",
+				"menu_button"
+			],
+			[
+				"mar",
+				"margin-bottom"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"to",
+				"toStuhl"
+			],
+			[
+				"li",
+				"list	list-style-type: numeric"
+			],
+			[
+				"le",
+				"leftCol"
+			],
+			[
+				"border",
+				"border	border-top-style: style"
+			],
+			[
+				"cl",
+				"cleardiv"
+			],
+			[
+				"req",
+				"reqX"
+			],
+			[
+				"r",
+				"rotation"
+			],
+			[
+				"abs",
+				"abs_speed"
+			],
+			[
+				"s",
+				"addSprite"
+			],
+			[
+				"ab",
+				"abs_speed"
+			],
+			[
+				"rat",
+				"rotation"
+			],
+			[
+				"spe",
+				"maxSpeed"
+			],
+			[
+				"footer",
+				"footer_todo"
+			],
+			[
+				"d_",
+				"d_pressed"
+			],
+			[
+				"l_",
+				"l_pressed"
+			],
+			[
+				"back",
+				"background	background-color: hex"
+			],
+			[
+				"ship",
+				"ship_sprite"
+			],
+			[
+				"bg",
+				"bg_0_sprite"
+			],
+			[
+				"sp",
+				"spriteID"
+			],
+			[
+				"get",
+				"getXposition"
+			],
+			[
+				"m",
+				"margin	margin: all"
+			],
+			[
+				"sv",
+				"svg_pic"
+			],
+			[
+				"play",
+				"playground_width"
+			],
+			[
+				"pl",
+				"playground_width"
+			],
+			[
+				"f",
+				"footer_desc"
+			],
+			[
+				"an",
+				"antiHeroSprite"
+			],
+			[
+				"he",
+				"height"
+			],
+			[
+				"las",
+				"lastGeneratedNb"
+			],
+			[
+				"gen",
+				"generateNextSqNb"
+			],
+			[
+				"cur",
+				"curSqNb"
+			],
+			[
+				"cu",
+				"curCol"
+			],
+			[
+				"row",
+				"rowID"
+			],
+			[
+				"ta",
+				"table_id"
+			],
+			[
+				"sq",
+				"sq_nb_table"
+			],
+			[
+				"ge",
+				"generateSquareNumbers"
+			],
+			[
+				"div",
+				"divBox_id"
+			],
+			[
+				"pad",
+				"padding	padding: V H"
+			],
+			[
+				"pa",
+				"padding	padding: V H"
+			],
+			[
+				"but",
+				"buttonbox"
+			],
+			[
+				"background",
+				"background	background-color: rgb"
+			],
+			[
+				"read",
+				"readme"
+			],
+			[
+				"of",
+				"offsetbox_value"
+			],
+			[
+				"in",
+				"input	Tag"
+			],
+			[
+				"new",
+				"new_x_pos"
+			],
+			[
+				"bt",
+				"bt_right"
+			],
+			[
+				"mo",
+				"moveElmt"
+			],
+			[
+				"set",
+				"set_yr_mon_day"
+			],
+			[
+				"da",
+				"dateObj"
+			],
+			[
+				"i",
+				"ifmain	if __name__ == '__main__'"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "sqllite_testsuite",
+	"command_palette":
+	{
+		"height": 152.0,
+		"selected_items":
+		[
+			[
+				"tabs",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"wra",
+				"HTML: Wrap Selection With Tag"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"wrap",
+				"HTML: Wrap Selection With Tag"
+			],
+			[
+				"htm",
+				"HTML: Wrap Selection With Tag"
+			],
+			[
+				"pep",
+				"User: Python PEP8 Autoformat"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"intall",
+				"Package Control: Install Package"
+			],
+			[
+				"tag",
+				"HTML: Wrap Selection With Tag"
+			],
+			[
+				"pac",
+				"Package Control: Remove Package"
+			],
+			[
+				"pack",
+				"Package Control: List Packages"
+			],
+			[
+				"color",
+				"Color picker"
+			],
+			[
+				"html",
+				"HTML: Wrap Selection With Tag"
+			],
+			[
+				"colo",
+				"Color picker"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"prett",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"query",
+				"Snippet: jQuery.browser"
+			],
+			[
+				"jquery",
+				"Snippet: A basic jQuery selector"
+			],
+			[
+				"la",
+				"LaTeXTools: View PDF"
+			],
+			[
+				"packa",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"pa",
+				"Package Control: Disable Package"
+			],
+			[
+				"latex",
+				"LaTeXTools: View PDF"
+			],
+			[
+				"git pus",
+				"Git: Push"
+			],
+			[
+				"git st",
+				"Git: Status"
+			],
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
+			[
+				"git stat",
+				"Git: Status"
+			],
+			[
+				"git di",
+				"Git: Diff All"
+			],
+			[
+				"git",
+				"Git: Status"
+			],
+			[
+				"github",
+				"GitHub: Open Gist in Editor"
+			],
+			[
+				"upgra",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"package",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"dis",
+				"Package Control: Discover Packages"
+			],
+			[
+				"set pla",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"set",
+				"Set Syntax: Java"
+			],
+			[
+				"Snippet: ",
+				"Snippet: #!/usr/bin/env"
+			]
+		],
+		"width": 476.0
+	},
+	"console":
+	{
+		"height": 251.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/simon/dev/website_coaching/www/dynamic/intro_page.html",
+		"/home/simon/dev/website_coaching/www/dynamic/unsereModule.html",
+		"/home/simon/dev/website_coaching/www/.htaccess",
+		"/home/simon/dev/website_coaching/fcgi-bin/webopt/templates/page_template.html",
+		"/home/simon/dev/website_coaching/www/dynamic/wirSind.html",
+		"/home/simon/dev/website_coaching/www/dynamic/wirMachen.html",
+		"/home/simon/dev/website_coaching/www/index.html",
+		"/home/simon/dev/website_coaching/deploy.sh",
+		"/home/simon/dev/website_coaching/deploy_to_uberspace.sh",
+		"/home/simon/dev/website_coaching/todo",
+		"/home/simon/dev/website_coaching/www/dynamic/praes.html",
+		"/home/simon/dev/website_coaching/www/dynamic/praes_end.html",
+		"/home/simon/dev/website_coaching/www/dynamic/unsereModule_kombinationen.html",
+		"/home/simon/dev/website_coaching/www/404.html",
+		"/home/simon/dev/website_coaching/www/dynamic/kontakt.html",
+		"/home/simon/dev/website_coaching/www/content/index.html",
+		"/home/simon/dev/website_coaching/www/content/praes/wirSind.html",
+		"/home/simon/dev/website_coaching/www/content/kontakt.html",
+		"/home/simon/dev/website_coaching/www/content/praes/praes.html",
+		"/home/simon/dev/website_coaching/www/content/praes/praes_end.html",
+		"/home/simon/dev/website_coaching/www/content/praes/unsereModule.html",
+		"/home/simon/dev/website_coaching/www/content/praes/unsereModule_kombinationen.html",
+		"/home/simon/dev/website_coaching/www/content/praes/wirMachen.html",
+		"/home/simon/dev/website_coaching/www/js/main.js",
+		"/home/simon/dev/website_coaching/www/js/jquery-1.7.2.min.js",
+		"/home/simon/dev/website_coaching/www/content/praes_end.html",
+		"/home/simon/dev/website_coaching/template.html",
+		"/home/simon/dev/website_coaching/www/content/praes.html",
+		"/home/simon/dev/website_coaching/www/content/unsereModule_kombinationen.html",
+		"/home/simon/dev/website_coaching/www/content/unsereModule.html",
+		"/home/simon/dev/website_coaching/www/content/wirMachen.html",
+		"/home/simon/dev/website_coaching/www/content/wirSind.html",
+		"/home/simon/dev/website_coaching/www/content/header.html",
+		"/home/simon/dev/website_coaching/fcgi-bin/webopt/webopt.py",
+		"/home/simon/dev/website_coaching/www/style/main.css",
+		"/home/simon/dev/website_coaching/www/footer.html",
+		"/home/simon/dev/website_coaching/www/header.html",
+		"/home/simon/dev/website_coaching/www/template.html",
+		"/home/simon/dev/website_coaching/fcgi-bin/webopt.fcgi",
+		"/home/simon/dev/website_coaching/fcgi-bin/webopt/templates/error_template.html",
+		"/home/simon/dev/website_coaching/www/bot.html",
+		"/home/simon/dev/website_coaching/www/top.html",
+		"/home/simon/dev/website_coaching/www/index.php",
+		"/home/simon/dev/website_coaching/sqllite_test_suite/DB_Gen.py",
+		"/home/simon/dev/website_coaching/www/dynamic/.htaccess",
+		"/home/simon/dev/website_coaching/www/dynamic/beispiel_schreiner/index.html",
+		"/home/simon/dev/website_coaching/sqllite_test_suite/DB_request_test.py",
+		"/home/simon/dev/website_coaching/fcgi-bin/webopt/static/page_template.html",
+		"/home/simon/dev/website_coaching/fcgi-bin/webopt/util.py",
+		"/home/simon/.config/sublime-text-2/Packages/User/Default (Linux).sublime-keymap",
+		"/home/simon/.config/sublime-text-2/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/simon/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/simon/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
+		"/home/simon/dev/website_coaching/fcgi-bin/webopt/getSeite.py",
+		"/home/simon/dev/website_coaching/.gitignore",
+		"/home/simon/dev/website_coaching/fcgi-bin/test.py",
+		"/home/simon/dev/website_coaching/fcgi-bin/test.fcgi",
+		"/home/simon/dev/website_coaching/fcgi-bin/webopt/test.py",
+		"/home/simon/dev/website_coaching/fcgi-bin/webopt/__init__.py",
+		"/home/simon/dev/website_coaching/cgi-bin/webopt.cgi",
+		"/home/simon/dev/website_coaching/webopt/webopt.py",
+		"/home/simon/dev/website_coaching/webopt/getSeite.py",
+		"/home/simon/dev/website_coaching/sqllite_test_suite/main.py",
+		"/home/simon/dev/website_coaching/webopt/main.py",
+		"/home/simon/dev/website_coaching/server_appl/getSeite.py",
+		"/home/simon/dev/website_coaching/server_appl/main.py",
+		"/home/simon/dev/website_coaching/cgi-bin/getSeite.py",
+		"/home/simon/dev/website_coaching/website_coaching.sublime-project",
+		"/home/simon/dev/website_coaching/www/dynamic/beispiel_schreiner/kategorie/tisch/index.html",
+		"/home/simon/dev/website_coaching/www/dynamic/beispiel_schreiner/kategorie/stuhl/index.html",
+		"/home/simon/dev/website_coaching/www/dynamic/beispiel_schreiner/kategorie/tisch/rund/Ja/index.html",
+		"/home/simon/dev/website_coaching/www/dynamic/beispiel_schreiner/kategorie/tisch/rund/Nein/index.html",
+		"/home/simon/dokumente/familienforschung/quellen/standesamt/uebersicht.csv",
+		"/home/simon/dev/website_coaching/www/dynamic/beispiel_schreiner/kategorie/tisch.html",
+		"/home/simon/dev/website_coaching/www/dynamic/beispiel_schreiner/kategorie/stuhl.html",
+		"/home/simon/dev/website_coaching/www/dynamic/beispiel_schreiner/tisch/tisch.html",
+		"/home/simon/dev/website_coaching/www/dynamic/beispiel_schreiner/stuhl/stuhl.html",
+		"/home/simon/dev/website_coaching/www/dynamic/beispiel_schreiner/tisch/index.html",
+		"/home/simon/dev/website_coaching/www/dynamic/beispiel_schreiner/stuhl/index.html",
+		"/home/simon/dev/website_coaching/www/dynamic/beispiel_schreiner/start.html",
+		"/home/simon/dev/website_coaching/www/dynamic/beispiel_schreiner/test_ablauf.html",
+		"/home/simon/dev/website_coaching/www/dynamic/test_ablauf.html",
+		"/home/simon/.config/sublime-text-2/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
+		"/home/simon/dev/website_coaching/wip/g3386-2.png",
+		"/home/simon/dev/website_coaching/wip/g5072-6.png",
+		"/home/simon/dev/website_coaching/2012-07-27 Protokoll",
+		"/home/simon/dev/website_coaching/www/data/g5344.png",
+		"/home/simon/dev/webdev_tests/.gitignore",
+		"/media/nexus/z_tiff-verarbeitung-tests/testscript.sh",
+		"/home/simon/dev/webdev_tests/www/space_odyssey/background_0.png",
+		"/home/simon/dev/webdev_tests/www/gamequery_test/index.html",
+		"/home/simon/dev/webdev_tests/www/index.html",
+		"/home/simon/dev/webdev_tests/webdev_tests.sublime-project",
+		"/home/simon/dev/webdev_tests/www/math/index.html",
+		"/home/simon/dev/webdev_tests/www/svg/index.html",
+		"/home/simon/Musik/diverse/Frost-[R]e[L]eases - House Invasion Best Of 2006 (Special TurnTable-Mix by Deacon Frost)/Frost-[R]e[L]eases_-_House_Invasion_Best_Of_2006_(Special_TurnTable-Mix_by_Deacon_Frost).cue",
+		"/home/simon/backup/extundelete_2tb/output_Sun_Jul_22_01_47_25_2012/audit.txt",
+		"/home/simon/dev/webdev_tests/www/box_mover/index.html",
+		"/home/simon/dev/webdev_tests/www/box_mover/main.css",
+		"/home/simon/dev/webdev_tests/deploy.sh",
+		"/home/simon/dev/webdev_tests/webdev_tests.sublime-workspace",
+		"/home/simon/dev/webdev_tests/index.html",
+		"/home/simon/dev/simon-lenz.de/simon-lenz.de.sublime-project",
+		"/home/simon/Ubuntu One/mukke",
+		"/home/simon/Ubuntu One/filme",
+		"/home/simon/Ubuntu One/images",
+		"/home/simon/scripts/fileSorter.py",
+		"/home/simon/dokumente/T-Mobile Verbidnungsdaten_ Scheib",
+		"/home/simon/backup/!dev/Dev/Programmieren/JumpNRun/data/readme.txt",
+		"/home/simon/dokumente/minecraft",
+		"/home/simon/dokumente/netload",
+		"/home/simon/dokumente/router",
+		"/home/simon/backup/60gb/Neu Textdokument.txt",
+		"/home/simon/backup/60gb/Sarah/Kunz-3-26-2008.txt",
+		"/home/simon/backup/60gb/documents/ftp-liste.txt",
+		"/home/simon/backup/!dev/Dev/workspace/JumpNRun/data/readme.txt",
+		"/home/simon/dokumente/vgl/simon/facharbeit/programm/psw",
+		"/home/simon/.config/awesome/rc.lua",
+		"/home/simon/dokumente/formell/2012-06-22_kuendigung_mobilcom_debitel/2012-06-22_kuendigung_mobilcom_debitel.tex",
+		"/home/simon/dev/simon-lenz.de/www/skin/jquery.lightbox-0.5.css",
+		"/home/simon/dev/simon-lenz.de/deploy.sh",
+		"/home/simon/dev/simon-lenz.de/www/content/index.html",
+		"/home/simon/dev/simon-lenz.de/testdepl",
+		"/home/simon/dev/simon-lenz.de/.gitignore",
+		"/home/simon/dev/simon-lenz.de/simon-lenz.de.sublime-workspace",
+		"/home/simon/configrepo/.local/share/applications/mimeapps.list",
+		"/home/simon/configrepo/.bash_profile",
+		"/home/simon/dokumente/cheatsheets/vim_cheatsheet"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"code",
+			"kbd",
+			"samp",
+			"webtext_header",
+			"strong",
+			"website_coaching",
+			"simon-lenz.de",
+			"localhost",
+			"::1 - - [<time>] [localhost/sid#16b7860]",
+			"::1 - - [<time>] [localhost/sid#16b7860][rid#189f8e0/initial]",
+			"localhost",
+			"[04/Oct/2012:19:45:31 +0200]",
+			"website_coaching",
+			"href=\".\"",
+			"href=\"\"",
+			"href=\"content\"",
+			"content",
+			"href=\"content\"",
+			"content",
+			"\"content\"",
+			"/content$/",
+			"/^content$/",
+			"^content$",
+			"content",
+			"webopt",
+			"/fcgi-bin/webopt.fcgi/getPageFromSeq",
+			"getNextPage",
+			"getNextPageFP",
+			"baumSeq_backBt",
+			"baumSeqToList",
+			"listToBaumSeq",
+			"pass",
+			"nextPage_text",
+			"nextPage_ID",
+			"Seite",
+			"span",
+			"div",
+			"setCurSpeed",
+			"speed",
+			"move",
+			"player.y",
+			"player.x",
+			"newpos",
+			"bg_0_speed",
+			"Move",
+			"			",
+			"center",
+			"Shift",
+			"Mod1",
+			"Control",
+			"Alt",
+			"ncmpcpp",
+			"Mod1",
+			"alt",
+			" 	 = ",
+			"full",
+			" 	 = ",
+			" = ",
+			"unindent",
+			"occurences",
+			"Alt",
+			"Shift",
+			"Strg",
+			"line",
+			"Strg",
+			"tool",
+			"open",
+			"self.event_map",
+			"event_map",
+			"Simon",
+			"person_youngestdied",
+			"bin",
+			"prefix",
+			",",
+			"word"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"href=\".\"",
+			"href=\"\"",
+			"player.position.y",
+			"player.position.x",
+			"angleBetweenVectors"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 222.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"in",
+				"www/content/index.html"
+			],
+			[
+				"pro",
+				"simon-lenz.de.sublime-project"
+			],
+			[
+				"inde",
+				"www/content/index.html"
+			],
+			[
+				"proj",
+				"simon-lenz.de.sublime-project"
+			],
+			[
+				"depl",
+				"deploy.sh"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/home/simon/dokumente/uni/studienverlaufsplan/studienverlaufsplan.sublime-project"
+			],
+			[
+				"sim",
+				"/home/simon/dev/simon-lenz.de/simon-lenz.de.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 271.0,
+	"status_bar_visible": true
+}
