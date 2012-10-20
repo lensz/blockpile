@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python ./src/main.py
+python2.7 ./src/main.py
