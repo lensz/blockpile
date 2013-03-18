@@ -6,7 +6,7 @@
 - Pygame: 1.9.1release [link](http://www.pygame.org/download.shtml)
 
 ## Screenshots:
-![ingame screenshot](http://simon-lenz.de/www/skin/gfx/proj_blockpile_main.png "Ingame screenshot")
+![ingame screenshot](https://raw.github.com/Graslandpinguin/blockpile/master/doc/proj_blockpile_main.png "Ingame screenshot")
 
 ### Classic Branch (version: 0.2.3)
 
